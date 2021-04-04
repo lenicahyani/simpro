@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('/worker', [WorkerController::class, 'index'])->name('worker');
+Route::get('/worker/add', [WorkerController::class, 'add'])->name('addworker');
+Route::post('/worker/simpan', [WorkerController::class, 'simpan'])->name('simpanaddworker');

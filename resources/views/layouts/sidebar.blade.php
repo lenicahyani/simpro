@@ -24,9 +24,9 @@
                   <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                 </ul>
               </li>
-              <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+                  <!-- {{route('worker')}} agar jika routnya di ganti nama routnya tidak masalah tidak diganti  -->
+                 </li><li class="active"><a class="nav-link" href="{{route('worker')}}"><i class="far fa-square"></i> <span>Worker</span></a></li>
+                <!-- <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
                   <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
@@ -48,8 +48,8 @@
                   <li><a class="nav-link" href="bootstrap-table.html">Table</a></li>
                   <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
                   <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
-                </ul>
-              </li>
+                </ul>              
+              <li class="nav-item dropdown"> -->
               <li class="menu-header">Stisla</li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
