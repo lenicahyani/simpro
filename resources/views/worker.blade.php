@@ -21,20 +21,21 @@
                 <tbody>
                     @foreach ($worker as $no => $data)
                     <tr>
-                        <td>{{$no+1}}</td>
+                        <td>{{$worker->firstItem()+$no}}</td>
                         <td>{{$data->kode_anggota}}</td>
                         <td>{{$data->nama_anggota}}</td>
                         <td>{{$data->posisi}}</td>
                         <td>{{$data->email}}</td>
                         <td>{{$data->telepon}}</td>
                         <td>
-                        <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                            <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
                         </td>                        
                     </tr>
                     @endforeach
                 </tbody>        
             </table>
+            {{$worker->links()}}
         </div>
     </div>
 </div>

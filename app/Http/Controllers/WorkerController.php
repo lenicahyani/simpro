@@ -9,7 +9,7 @@ class WorkerController extends Controller
 {
     //tampilkan data
     public function index(){
-        $worker = DB::table('worker')->get();
+        $worker = DB::table('worker')->paginate(5);
         return view('worker',['worker'=>$worker]);
     }
     //methode untuk menampilkan form tambah data
