@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card-body">
-        <form action="{{ route('simpanaddworker') }}" method="POST">
+        <form action="{{ route('simpanworker') }}" method="POST">
         <!-- closed request foldery -->
         @csrf
             <div class="alert alert-info">

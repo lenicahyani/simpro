@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::get('/worker', [WorkerController::class, 'index'])->name('worker');
 Route::get('/worker/add', [WorkerController::class, 'add'])->name('addworker');
-Route::post('/worker/simpan', [WorkerController::class, 'simpan'])->name('simpanaddworker');
+Route::post('/worker/simpan', [WorkerController::class, 'simpan'])->name('simpanworker');
+Route::delete('/worker/delete ', [WorkerController::class, 'delete'])->name('deleteworker');

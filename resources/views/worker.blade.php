@@ -29,7 +29,7 @@
                         <td>{{$data->telepon}}</td>
                         <td>
                             <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                            <a href="#" class="btn btn-icon btn-danger swal-confirm"><i class="fas fa-times"></i></a>
                         </td>                        
                     </tr>
                     @endforeach
@@ -43,6 +43,27 @@
 
 @push('page-scripts')
 <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+@endpush
 
-
+@push('after-scripts')
+<script>
+$(".swal-confirm").click(function() {
+  swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal('Poof! Your imaginary file has been deleted!', {
+        icon: 'success',
+      });
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+</script>
 @endpush
