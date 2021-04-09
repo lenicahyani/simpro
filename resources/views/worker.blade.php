@@ -16,7 +16,7 @@
                 </div>
             </div>
             @endif         
-            <table class="table table-stiped">
+            <table class="table table-striped table-md">
                 <thead>
                 <tr>
                     <th>No</th>

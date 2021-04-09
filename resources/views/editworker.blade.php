@@ -5,9 +5,10 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card-body">
-        <form action="{{ route('simpanworker') }}" method="POST">
+        <form action="{{ route('updateworker',$worker->id) }}" method="POST">
         <!-- closed request foldery -->
         @csrf
+        @method('patch')
             <div class="alert alert-info">
                 <b>Note!</b> Not all browsers support HTML5 type input.
             </div>
@@ -17,7 +18,13 @@
                 @enderror>Kode Anggota @error('kode_anggota')
                     {{$message}}
                 @enderror</label>
-                <input type="text" name="kode_anggota" value= "{{ old('kode_anggota') }}" class="form-control">
+                <input type="text" name="kode_anggota" 
+                @if(old('kode_anggota'))
+                value= "{{ old('kode_anggota') }}" 
+                    @else                
+                    value= "{{ $worker->kode_anggota }}" 
+                @endif
+                class="form-control">
             </div>
             <div class="form-group">
             <label @error('nama_anggota')
@@ -25,7 +32,7 @@
                 @enderror>Nama Anggota @error('nama_anggota')
                     {{$message}}
                 @enderror</label>
-                <input type="text" name="nama_anggota"  value= "{{ old('nama_anggota') }}" class="form-control">
+                <input type="text" name="nama_anggota"  value= "{{  $worker->nama_anggota  }}" class="form-control">
             </div>
             <div class="form-group"  >
                 <label>Posisi</label>
@@ -45,15 +52,21 @@
                 @enderror>Email @error('email')
                     {{$message}}
                 @enderror</label>
-                <input type="email"  value= "{{ old('email') }}" name="email" class="form-control">
+                <input type="email"  value= "{{  $worker->email  }}" name="email" class="form-control">
             </div>
             <div class="form-group">
-                <label @error('telepon')
+            <label @error('telepon')
                     class="text-danger"
                 @enderror>Telepon @error('telepon')
                     {{$message}}
                 @enderror</label>
-                <input type="text"  value= "{{ old('telepon') }}" name="telepon" class="form-control">
+                <input type="text" name="telepon" 
+                @if(old('telepon'))
+                value= "{{ old('telepon') }}" 
+                    @else                
+                    value= "{{ $worker->telepon }}" 
+                @endif
+                class="form-control">
             </div>
             </div>   
             <div class="card-footer text-right">

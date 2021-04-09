@@ -7,20 +7,7 @@ use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    //tampilkan data
-    public function index(){
-        $worker = DB::table('worker')->paginate(5);
-        return view('worker',['worker'=>$worker]);
-    }
-    //methode untuk menampilkan form tambah data
-    public function add(){
-        return view ('addworker');
-    }
-
-    // methode untuk simpan data
-    public function simpan(Request $request){
-        // cek mengirim file ke database// request adalah ata yg di peroleh dari post
-        // dd($request->all());
+    private function _validation(Request $request){
         $validation = $request->validate([
             'kode_anggota' => 'required|max:6',
             'nama_anggota' => 'required',
@@ -35,9 +22,26 @@ class WorkerController extends Controller
             'email.required' => 'Harus diisi',
             'telepon.required' => 'Harus diisi',            
             'telepon.min' => 'Maxsimal 13 digit',
-        ]
-    
-    );
+        ]);
+    }
+
+    //tampilkan data
+    public function index(){
+        $worker = DB::table('worker')->paginate(5);
+        return view('worker',['worker'=>$worker]);
+    }
+    //methode untuk menampilkan form tambah data
+    public function add(){
+        return view ('addworker');
+    }
+
+    // methode untuk simpan data
+    public function simpan(Request $request){
+        // cek mengirim file ke database// request adalah ata yg di peroleh dari post
+        // dd($request->all());
+
+        $this->_validation($request) ;  
+   
 
         DB::table('worker')->insert([
             ['kode_anggota'=> $request->kode_anggota, 
@@ -54,6 +58,21 @@ class WorkerController extends Controller
         $worker = DB::table('worker')->where('id',$id)->first();
         return view('editworker',['worker'=>$worker]);
     }
+
+    // methode untuk update data
+
+    public function update(Request $request, $id){
+        $this->_validation($request);
+        DB::table('worker')->where('id',$id)->update([
+            'kode_anggota'=> $request->kode_anggota, 
+            'nama_anggota'=> $request->nama_anggota, 
+            'posisi'=> $request->posisi, 
+            'email'=> $request->email, 
+            'telepon'=> $request->telepon
+        ]);
+        return redirect()->route('worker')->with('message','Data berhasil diupdate');
+    }
+
 
     // methode untuk hapus data
     public function delete($id){

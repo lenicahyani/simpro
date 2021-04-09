@@ -23,3 +23,4 @@ Route::get('/worker/add', [WorkerController::class, 'add'])->name('addworker');
 Route::post('/worker/simpan', [WorkerController::class, 'simpan'])->name('simpanworker');
 Route::delete('/worker/delete/{id}', [WorkerController::class, 'delete'])->name('deleteworker');
 Route::get('/worker/{id}/edit', [WorkerController::class, 'edit'])->name('editworker');
+Route::patch('/worker/{id}', [WorkerController::class, 'update'])->name('updateworker');
