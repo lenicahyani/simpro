@@ -5,7 +5,17 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
             <a href="worker/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i> Tambah Anggota</a>
-            <hr>            
+            <hr>   
+            @if(session('message'))
+            <div class="alert alert-primary  alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    {{session('message')}}
+                </div>
+            </div>
+            @endif         
             <table class="table table-stiped">
                 <thead>
                 <tr>
@@ -28,8 +38,14 @@
                         <td>{{$data->email}}</td>
                         <td>{{$data->telepon}}</td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger swal-confirm"><i class="fas fa-times"></i></a>
+                            <a href="{{route('editworker',$data->id)}}" class="badge badge-primary">Edit</a>
+                            <a href="#"  data-id="{{$data->id}}" class="badge  badge-danger swal-confirm">
+                                <form action=" {{ route('deleteworker',$data->id) }}" id="delete{{$data->id}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                </form>                                
+                                Delete
+                            </a>
                         </td>                        
                     </tr>
                     @endforeach
@@ -47,22 +63,24 @@
 
 @push('after-scripts')
 <script>
-$(".swal-confirm").click(function() {
-  swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this imaginary file!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
+$(".swal-confirm").click(function(e) {
+    id = e.target.dataset.id;
+    swal({
+        title: 'Yakin hapus data?',
+        text: 'Data yang  dihapus tidak bisa di kembalikan',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
     })
     .then((willDelete) => {
-      if (willDelete) {
-      swal('Poof! Your imaginary file has been deleted!', {
-        icon: 'success',
-      });
-      } else {
-      swal('Your imaginary file is safe!');
-      }
+        if (willDelete) {
+            // swal('Poof! Your imaginary file has been deleted!', {
+            // icon: 'success',
+            // });
+            $(`#delete${id}`).submit();
+        } else {
+            // swal('Your imaginary file is safe!');
+        }
     });
 });
 </script>

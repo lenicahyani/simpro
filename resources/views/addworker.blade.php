@@ -12,12 +12,20 @@
                 <b>Note!</b> Not all browsers support HTML5 type input.
             </div>
             <div class="form-group">
-                <label>Kode Anggota</label>
-                <input type="text" name="kode_anggota" class="form-control">
+                <label @error('kode_anggota')
+                    class="text-danger"
+                @enderror>Kode Anggota @error('kode_anggota')
+                    {{$message}}
+                @enderror</label>
+                <input type="text" name="kode_anggota" value= "{{ old('kode_anggota') }}" class="form-control">
             </div>
             <div class="form-group">
-                <label>Nama Anggota</label>
-                <input type="text" name="nama_anggota" class="form-control">
+            <label @error('nama_anggota')
+                    class="text-danger"
+                @enderror>Nama Anggota @error('nama_anggota')
+                    {{$message}}
+                @enderror</label>
+                <input type="text" name="nama_anggota"  value= "{{ old('nama_anggota') }}" class="form-control">
             </div>
             <div class="form-group"  >
                 <label>Posisi</label>
@@ -32,12 +40,20 @@
             </div>
             
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control">
+                <label @error('email')
+                    class="text-danger"
+                @enderror>Email @error('email')
+                    {{$message}}
+                @enderror</label>
+                <input type="email"  value= "{{ old('email') }}" name="email" class="form-control">
             </div>
             <div class="form-group">
-                <label>Telepon</label>
-                <input type="text" name="telepon" class="form-control">
+                <label @error('telepon')
+                    class="text-danger"
+                @enderror>Telepon @error('telepon')
+                    {{$message}}
+                @enderror</label>
+                <input type="text"  value= "{{ old('telepon') }}" name="telepon" class="form-control">
             </div>
             </div>   
             <div class="card-footer text-right">

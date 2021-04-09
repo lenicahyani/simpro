@@ -21,6 +21,24 @@ class WorkerController extends Controller
     public function simpan(Request $request){
         // cek mengirim file ke database// request adalah ata yg di peroleh dari post
         // dd($request->all());
+        $validation = $request->validate([
+            'kode_anggota' => 'required|max:6',
+            'nama_anggota' => 'required',
+            'posisi' => 'required',
+            'email' => 'required',
+            'telepon' => 'required|max:13'
+        ],
+        [
+            'kode_anggota.required' => 'Harus diisi',
+            'nama_anggota.required' => 'Harus diisi',
+            'posisi.required' => 'Harus diisi',
+            'email.required' => 'Harus diisi',
+            'telepon.required' => 'Harus diisi',            
+            'telepon.min' => 'Maxsimal 13 digit',
+        ]
+    
+    );
+
         DB::table('worker')->insert([
             ['kode_anggota'=> $request->kode_anggota, 
              'nama_anggota'=> $request->nama_anggota, 
@@ -28,9 +46,19 @@ class WorkerController extends Controller
              'email'=> $request->email, 
              'telepon'=> $request->telepon],
         ]);
-        // setlah menyimpan ke database kembali ke halaman worker
-        return redirect()->route('worker');
+        // setlah menyimpan ke database kembali ke halaman worker dan memunculkan pesan flash
+        return redirect()->route('worker')->with('message', 'Data berhasil disimpan');
     }
     // methode untuk edit data
+    public function edit($id){
+        $worker = DB::table('worker')->where('id',$id)->first();
+        return view('editworker',['worker'=>$worker]);
+    }
+
     // methode untuk hapus data
+    public function delete($id){
+        DB::table('worker')->where('id',$id)->delete();
+
+        return redirect()->back()->with('message', 'Data berhasil dihapus');
+    }
 }
