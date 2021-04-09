@@ -38,7 +38,7 @@
                         <td>{{$data->email}}</td>
                         <td>{{$data->telepon}}</td>
                         <td>
-                            <a href="{{route('editworker',$data->id)}}" class="badge badge-primary">Edit</a>
+                            <a href=" {{ route('editworker',$data->id) }}" class="badge badge-primary">Edit</a>
                             <a href="#"  data-id="{{$data->id}}" class="badge  badge-danger swal-confirm">
                                 <form action=" {{ route('deleteworker',$data->id) }}" id="delete{{$data->id}}" method="POST">
                                 @csrf
