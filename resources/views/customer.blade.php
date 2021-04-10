@@ -21,7 +21,6 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Customer</th>
-                    <th>Nama Anggota</th>
                     <th>Email</th>                    
                     <th>Alamat</th>
                     <th>Telepon</th>

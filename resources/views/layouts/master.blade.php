@@ -35,6 +35,7 @@
       <div class="navbar-bg"></div>
       <!-- titik atau / sama ajah ya -->
       @include('layouts.header')
+      @include('layouts.sidebar')
       
       <!-- Main Content -->
       <div class="main-content">
@@ -46,8 +47,7 @@
               <div class="breadcrumb-item"><a href="#">Bootstrap Components</a></div>
               <div class="breadcrumb-item">Form</div>
             </div>
-            </div>
-      @include('layouts.sidebar')
+            </div>  
 
 
             @yield('content')            

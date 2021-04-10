@@ -43,7 +43,7 @@ class CustomerController extends Controller
         $this->_validation($request) ;     
 
         DB::table('customer')->insert([
-            ['nama'=> $request->kode_anggota,
+            ['nama'=> $request->nama,
              'email'=> $request->email,  
              'alamat'=> $request->alamat, 
              'telepon'=> $request->telepon]
@@ -62,7 +62,7 @@ class CustomerController extends Controller
     public function update(Request $request, $id){
         $this->_validation($request);
         DB::table('customer')->where('id',$id)->update([
-            'nama'=> $request->kode_anggota,
+            'nama'=> $request->nama,
             'email'=> $request->email,  
             'alamat'=> $request->alamat, 
             'telepon'=> $request->telepon

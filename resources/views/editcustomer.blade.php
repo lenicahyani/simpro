@@ -15,10 +15,16 @@
             <div class="form-group">
             <label @error('nama')
                     class="text-danger"
-                @enderror>Nama Customer @error('nama')
+                @enderror>Nama @error('nama')
                     {{$message}}
                 @enderror</label>
-                <input type="text" name="nama"  value= "{{  $customer->nama  }}" class="form-control">
+                <input type="text" name="nama" 
+                @if(old('nama'))
+                value= "{{ old('nama') }}" 
+                    @else                
+                    value= "{{ $customer->nama }}" 
+                @endif
+                class="form-control">
             </div>
             <div class="form-group">
             <label @error('email')
@@ -26,15 +32,27 @@
                 @enderror>Email @error('email')
                     {{$message}}
                 @enderror</label>
-                <input type="email" name="email"  value= "{{  $customer->email  }}" class="form-control">
+                <input type="email" name="email" 
+                @if(old('email'))
+                value= "{{ old('email') }}" 
+                    @else                
+                    value= "{{ $customer->email }}" 
+                @endif
+                class="form-control">
             </div>
             <div class="form-group">
-                <label @error('alamat')
+            <label @error('alamat')
                     class="text-danger"
                 @enderror>Alamat @error('alamat')
                     {{$message}}
                 @enderror</label>
-                <input type="text"  value= "{{  $customer->alamat  }}" name="alamat" class="form-control">
+                <input type="text" name="alamat" 
+                @if(old('alamat'))
+                value= "{{ old('alamat') }}" 
+                    @else                
+                    value= "{{ $customer->alamat }}" 
+                @endif
+                class="form-control">
             </div>
             <div class="form-group">
             <label @error('telepon')
