@@ -35,8 +35,7 @@
       <div class="navbar-bg"></div>
       <!-- titik atau / sama ajah ya -->
       @include('layouts.header')
-      @include('layouts.sidebar')
-
+      
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -48,8 +47,10 @@
               <div class="breadcrumb-item">Form</div>
             </div>
             </div>
+      @include('layouts.sidebar')
 
-            @yield('content')
+
+            @yield('content')            
         </section>
       </div>
       <footer class="main-footer">

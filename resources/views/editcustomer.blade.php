@@ -5,54 +5,50 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card-body">
-        <form action="{{ route('simpanworker') }}" method="POST">
+        <form action="{{ route('updatecustomer',$customer->id) }}" method="POST">
         <!-- closed request foldery -->
         @csrf
+        @method('patch')
             <div class="alert alert-info">
                 <b>Note!</b> Not all browsers support HTML5 type input.
             </div>
             <div class="form-group">
-                <label @error('kode_anggota')
+            <label @error('nama')
                     class="text-danger"
-                @enderror>Kode Anggota @error('kode_anggota')
+                @enderror>Nama Customer @error('nama')
                     {{$message}}
                 @enderror</label>
-                <input type="text" name="kode_anggota" value= "{{ old('kode_anggota') }}" class="form-control">
+                <input type="text" name="nama"  value= "{{  $customer->nama  }}" class="form-control">
             </div>
             <div class="form-group">
-            <label @error('nama_anggota')
-                    class="text-danger"
-                @enderror>Nama Anggota @error('nama_anggota')
-                    {{$message}}
-                @enderror</label>
-                <input type="text" name="nama_anggota"  value= "{{ old('nama_anggota') }}" class="form-control">
-            </div>
-            <div class="form-group"  >
-                <label>Pekerjaan</label>
-                <select class="form-control" name="posisi" >
-                <option>Frontand Programer </option>
-                <option>Backand Programer </option>
-                <option>UI/UX Web</option>
-                <option>Analisis</option>
-                <option>Tester</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label @error('email')
+            <label @error('email')
                     class="text-danger"
                 @enderror>Email @error('email')
                     {{$message}}
                 @enderror</label>
-                <input type="email"  value= "{{ old('email') }}" name="email" class="form-control">
+                <input type="email" name="email"  value= "{{  $customer->email  }}" class="form-control">
             </div>
             <div class="form-group">
-                <label @error('telepon')
+                <label @error('alamat')
+                    class="text-danger"
+                @enderror>Alamat @error('alamat')
+                    {{$message}}
+                @enderror</label>
+                <input type="text"  value= "{{  $customer->alamat  }}" name="alamat" class="form-control">
+            </div>
+            <div class="form-group">
+            <label @error('telepon')
                     class="text-danger"
                 @enderror>Telepon @error('telepon')
                     {{$message}}
                 @enderror</label>
-                <input type="text"  value= "{{ old('telepon') }}" name="telepon" class="form-control">
+                <input type="text" name="telepon" 
+                @if(old('telepon'))
+                value= "{{ old('telepon') }}" 
+                    @else                
+                    value= "{{ $customer->telepon }}" 
+                @endif
+                class="form-control">
             </div>
             </div>   
             <div class="card-footer text-right">

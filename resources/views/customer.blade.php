@@ -4,7 +4,7 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-            <a href="worker/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i> Tambah Anggota</a>
+            <a href="customer/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i>+ Tambah Customer</a>
             <hr>   
             @if(session('message'))
             <div class="alert alert-primary  alert-dismissible show fade">
@@ -20,27 +20,26 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode Anggota</th>
+                    <th>Nama Customer</th>
                     <th>Nama Anggota</th>
-                    <th>Pekerjaan</th>
-                    <th>Email</th>
+                    <th>Email</th>                    
+                    <th>Alamat</th>
                     <th>Telepon</th>
                     <th>Action</th>
                 </tr>  
                 </thead>     
                 <tbody>
-                    @foreach ($worker as $no => $data)
+                    @foreach ($customer as $no => $data)
                     <tr>
-                        <td>{{$worker->firstItem()+$no}}</td>
-                        <td>{{$data->kode_anggota}}</td>
-                        <td>{{$data->nama_anggota}}</td>
-                        <td>{{$data->posisi}}</td>
+                        <td>{{$customer->firstItem()+$no}}</td>
+                        <td>{{$data->nama}}</td>                        
                         <td>{{$data->email}}</td>
+                        <td>{{$data->alamat}}</td>
                         <td>{{$data->telepon}}</td>
                         <td>
-                            <a href="{{route('editworker',$data->id)}}" class="badge badge-primary">Edit</a>
+                            <a href="{{route('editcustomer',$data->id)}}" class="badge badge-primary">Edit</a>
                             <a href="#"  data-id="{{$data->id}}" class="badge  badge-danger swal-confirm">
-                                <form action=" {{ route('deleteworker',$data->id) }}" id="delete{{$data->id}}" method="POST">
+                                <form action=" {{ route('deletecustomer',$data->id) }}" id="delete{{$data->id}}" method="POST">
                                 @csrf
                                 @method('delete')
                                 </form>                                
@@ -51,7 +50,7 @@
                     @endforeach
                 </tbody>        
             </table>
-            {{$worker->links()}}
+            {{$customer->links()}}
         </div>
     </div>
 </div>
