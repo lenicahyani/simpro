@@ -2,82 +2,61 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    private function _validation(Request $request){
-        $validation = $request->validate([
-            'kode_anggota' => 'required|max:6',
-            'nama_anggota' => 'required',
-            'posisi' => 'required',
-            'email' => 'required',
-            'telepon' => 'required|max:13'
-        ],
-        [
-            'kode_anggota.required' => 'Harus diisi',
-            'nama_anggota.required' => 'Harus diisi',
-            'posisi.required' => 'Harus diisi',
-            'email.required' => 'Harus diisi',
-            'telepon.required' => 'Harus diisi',            
-            'telepon.min' => 'Maxsimal 13 digit',
-        ]);
-    }
-
-    //tampilkan data
+    //tampilkan data worker
     public function index(){
-        $worker = DB::table('worker')->paginate(5);
-        return view('worker',['worker'=>$worker]);
+        
+        $data_worker = \App\Models\Worker::all();
+        return view('workers.worker',['data_worker'=>$data_worker]);
+    
     }
-    //methode untuk menampilkan form tambah data
-    public function add(){
-        return view ('addworker');
+    //memampilkan form addworker
+    public function add(){      
+        
+        $data_worker = \App\Models\Worker::all();
+        return view('workers.addworker',['data_worker'=>$data_worker]);
+     
     }
 
-    // methode untuk simpan data
-    public function simpan(Request $request){
-        // cek mengirim file ke database// request adalah ata yg di peroleh dari post
-        // dd($request->all());
+    //menyimpan form addworker
+    public function simpan(Request $request){      
+     
+         \App\Models\Worker::create($request->all());
+         return redirect ('/worker')->with('sukses','Data Berhasil Diinput');
+        // return $request->all();
+    }
 
-        $this->_validation($request) ;  
+    //menyimpan form editworker 
+    public function edit ($id){      
+     
+        $worker = \App\Models\Worker::find($id);
+         return view ('workers.editworker',['worker' => $worker ]);   
+   }
+
+   //update worker
+   public function update (Request $request, $id){     
+     
+    $worker = \App\Models\Worker::find($id);
+    $worker->update($request->all());
+    return redirect('/worker')->with('sukses','Data Berhasil Diupdate');
+    }
+
+    //mellihat Hapus worker 
+    public function delete ($id){      
+     
+        $worker = \App\Models\Worker::find($id);
+        $worker -> delete($worker);
+        return redirect('/worker')->with('sukses','Data Berhasil Dihapus');
+    }
+    //mellihat detail worker 
+    public function detail ($id){      
+     
+        $worker = \App\Models\Worker::find($id);
+         return view ('workers.detailworker',['worker' => $worker ]);   
+   }
    
 
-        DB::table('worker')->insert([
-            ['kode_anggota'=> $request->kode_anggota, 
-             'nama_anggota'=> $request->nama_anggota, 
-             'posisi'=> $request->posisi, 
-             'email'=> $request->email, 
-             'telepon'=> $request->telepon],
-        ]);
-        // setlah menyimpan ke database kembali ke halaman worker dan memunculkan pesan flash
-        return redirect()->route('worker')->with('message', 'Data berhasil disimpan');
-    }
-    // methode untuk edit data
-    public function edit($id){
-        $worker = DB::table('worker')->where('id',$id)->first();
-        return view('editworker',['worker'=>$worker]);
-    }
-
-    // methode untuk update data
-
-    public function update(Request $request, $id){
-        $this->_validation($request);
-        DB::table('worker')->where('id',$id)->update([
-            'kode_anggota'=> $request->kode_anggota, 
-            'nama_anggota'=> $request->nama_anggota, 
-            'posisi'=> $request->posisi, 
-            'email'=> $request->email, 
-            'telepon'=> $request->telepon
-        ]);
-        return redirect()->route('worker')->with('message','Data berhasil diupdate');
-    }
-
-
-    // methode untuk hapus data
-    public function delete($id){
-        DB::table('worker')->where('id',$id)->delete();
-
-        return redirect()->back()->with('message', 'Data berhasil dihapus');
-    }
 }

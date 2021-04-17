@@ -4,7 +4,7 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-            <a href="customer/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i>+ Tambah Customer</a>
+            <a href="" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i> Tambah Data</a>
             <hr>   
             @if(session('message'))
             <div class="alert alert-primary  alert-dismissible show fade">
@@ -16,51 +16,45 @@
                 </div>
             </div>
             @endif         
-            <table class="table table-striped table-md">
+            <table class="table table-stiped">
                 <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Nama Customer</th>
-                    <th>Email</th>                    
-                    <th>Alamat</th>
-                    <th>Telepon</th>
-                    <th>Action</th>
+                <th>No</th>
+				<th>Kode Proyek</th>
+				<th>Tanggal</th>
+				<th>Customer</th>
+                <th>Nama Proyek</th>
+                <th>Nilai Proyek</th>
+				<th>Termin Ke</th>
+				<th>Tanggal Bayar</th>					
+				<th>Total Bayar</th> 
                 </tr>  
                 </thead>     
                 <tbody>
-                    @foreach ($customer as $no => $data)
-                    <tr>
-                        <td>{{$customer->firstItem()+$no}}</td>
-                        <td>{{$data->nama}}</td>                        
-                        <td>{{$data->email}}</td>
-                        <td>{{$data->alamat}}</td>
-                        <td>{{$data->telepon}}</td>
-                        <td>
-                            <a href="{{route('editcustomer',$data->id)}}" class="badge badge-primary">Edit</a>
-                            <a href="#"  data-id="{{$data->id}}" class="badge  badge-danger swal-confirm">
-                                <form action=" {{ route('deletecustomer',$data->id) }}" id="delete{{$data->id}}" method="POST">
+                   
+                            <a href="" class="badge badge-primary">Edit</a>
+                            <a href="#" class="badge  badge-danger swal-confirm">
+                                <!-- <form action=" {{ route('deleteworker',$data->worker_id )}}" id="delete{{$data->worker_id}}" method="POST">                           
                                 @csrf
                                 @method('delete')
-                                </form>                                
+                                </form>                                 -->
                                 Delete
                             </a>
+                            
                         </td>                        
                     </tr>
-                    @endforeach
+                    
                 </tbody>        
             </table>
-            {{$customer->links()}}
+          
         </div>
     </div>
 </div>
 @endsection
-
-@push('page-scripts')
-<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
 @push('after-scripts')
-<script>
+<!-- <script>
 $(".swal-confirm").click(function(e) {
     id = e.target.dataset.id;
     swal({
@@ -80,6 +74,6 @@ $(".swal-confirm").click(function(e) {
             // swal('Your imaginary file is safe!');
         }
     });
-});
+}); -->
 </script>
 @endpush

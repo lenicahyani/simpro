@@ -26,7 +26,9 @@
               </li> -->
                 <!-- {{route('worker')}} agar jika routnya di ganti nama routnya tidak masalah tidak diganti  -->
                 </li><li class="active"><a class="nav-link" href="{{route('worker')}}"><i class="far fa-square"></i> <span>Worker</span></a></li> 
-                </li><li class="active"><a class="nav-link" href="{{route('customer')}}"><i class="far fa-square"></i> <span>Customer</span></a></li>                              
-            </div>
+                </li><li class="active"><a class="nav-link" href="{{route('customer')}}"><i class="far fa-square"></i> <span>Customer</span></a></li> 
+                </li><li class="active"><a class="nav-link" href="{{route('proyek')}}"><i class="far fa-square"></i> <span>Proyek</span></a></li> 
+                </li><li class="active"><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Customer</span></a></li>                              
+          
         </aside>
       </div>

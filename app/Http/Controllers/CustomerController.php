@@ -6,76 +6,56 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    private function _validation(Request $request){
-        $validation = $request->validate([
-            'nama' => 'required|max:100',
-            'email' => 'required|max:100',
-            'alamat' => 'required|max:100',
-            'telepon' => 'required|max:13'
-        ],
-        [
-            'nama.required' => 'Harus diisi',
-            'nama.min' => 'Maxsimal 100 digit',
-            'email.required' => 'Harus diisi',
-            'email.min' => 'Maxsimal 100 digit',
-            'alamat.required' => 'Harus diisi',
-            'alamat.min' => 'Maxsimal 100 digit',
-            'telepon.required' => 'Harus diisi',          
-            'telepon.min' => 'Maxsimal 13 digit',
-        ]);
-    }
-
-    //tampilkan data
+    //tampilkan data customer
     public function index(){
-        $customer = DB::table('customer')->paginate(5);
-        return view('customer',['customer'=>$customer]);
-    }
-    //methode untuk menampilkan form tambah data
-    public function add(){
-        return view ('addcustomer');
-    }
-
-    // methode untuk simpan data
-    public function simpan(Request $request){
-        // cek mengirim file ke database// request adalah ata yg di peroleh dari post
-        // dd($request->all());
-
-        $this->_validation($request) ;     
-
-        DB::table('customer')->insert([
-            ['nama'=> $request->nama,
-             'email'=> $request->email,  
-             'alamat'=> $request->alamat, 
-             'telepon'=> $request->telepon]
-        ]);
-        // setlah menyimpan ke database kembali ke halaman customer dan memunculkan pesan flash
-        return redirect()->route('customer')->with('message', 'Data berhasil disimpan');
-    }
-    // methode untuk edit data
-    public function edit($id){
-        $customer = DB::table('customer')->where('id',$id)->first();
-        return view('editcustomer',['customer'=>$customer]);
-    }
-
-    // methode untuk update data
-
-    public function update(Request $request, $id){
-        $this->_validation($request);
-        DB::table('customer')->where('id',$id)->update([
-            'nama'=> $request->nama,
-            'email'=> $request->email,  
-            'alamat'=> $request->alamat, 
-            'telepon'=> $request->telepon
-        ]);
-        return redirect()->route('customer')->with('message','Data berhasil diupdate');
-    }
-
-
-    // methode untuk hapus data
-    public function delete($id){
-        DB::table('customer')->where('id',$id)->delete();
-
-        return redirect()->back()->with('message', 'Data berhasil dihapus');
-    }
+        
+        $data_customer = \App\Models\Customer::all();
+        return view('customers.customer',['data_customer'=>$data_customer]);
     
+    }
+    //memampilkan form addcustomer
+    public function add(){      
+        
+        $data_customer = \App\Models\Customer::all();
+        return view('customers.addcustomer',['data_customer'=>$data_customer]);
+     
+    }
+
+    //menyimpan form addcustomer
+    public function simpan(Request $request){      
+     
+         \App\Models\Customer::create($request->all());
+         return redirect ('/customer')->with('sukses','Data Berhasil Diinput');
+        // return $request->all();
+    }
+
+    //menyimpan form editcustomer 
+    public function edit ($id){      
+     
+        $customer = \App\Models\Customer::find($id);
+         return view ('customers.editcustomer',['customer' => $customer ]);   
+   }
+
+   //update customer
+   public function update (Request $request, $id){     
+     
+    $customer = \App\Models\Customer::find($id);
+    $customer->update($request->all());
+    return redirect('/customer')->with('sukses','Data Berhasil Diupdate');
+    }
+
+    //mellihat Hapus customer 
+    public function delete ($id){      
+     
+        $customer = \App\Models\Customer::find($id);
+        $customer -> delete($customer);
+        return redirect('/customer')->with('sukses','Data Berhasil Dihapus');
+    }
+    //mellihat detail customer 
+    public function detail ($id){      
+     
+        $customer = \App\Models\Customer::find($id);
+         return view ('customers.detailcustomer',['customer' => $customer ]);   
+   }
+   
 }

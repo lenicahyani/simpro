@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card-body">
-        <form action="{{ route('simpancustomer') }}" method="POST">
+        <form action="{{ route('simpanlapproyek') }}" method="POST">
         <!-- closed request foldery -->
         @csrf
             <div class="alert alert-info">
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label @error('nama')
                     class="text-danger"
-                @enderror>Nama Customer @error('nama')
+                @enderror>Nama lapproyek @error('nama')
                     {{$message}}
                 @enderror</label>
                 <input type="text" name="nama" value= "{{ old('nama') }}" class="form-control">
