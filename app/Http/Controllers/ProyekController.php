@@ -41,7 +41,9 @@ class ProyekController extends Controller
      
     $proyek = \App\Models\proyek::find($id);
     $proyek->update($request->all());
-    return redirect('/proyek')->with('sukses','Data Berhasil Diupdate');
+    return redirect()->route('detailproyek', $id)->with('sukses','Data Berhasil Diupdate');
+    // return redirect()->back()->with('sukses','Data Berhasil Diupdate');
+    // return redirect('/proyek')->with('sukses','Data Berhasil Diupdate');
     }
 
     //mellihat Hapus proyek 

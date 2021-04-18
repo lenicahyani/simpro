@@ -6,13 +6,7 @@
 <div class="card">
     <div class="card-header"><h4>Edit Proyek</h4></div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
-                @if(session('sukses'))
-                <div class="alert alert-primary">
-                {{session('sukses')}}
-                </div>
-                @endif
+            <div class="row">               
                 <form action="{{ route('updateproyek',$proyek->id) }}" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -38,8 +32,8 @@
                     <div class="form-group">
                         <label>Nama Pimpinan</label>
                         <select class="form-control" name="pimpinan_proyek" >
-                        <option  value="id" @if($proyek->nama_pimpinan == 'ambil dari tabel worker')selected @endif>ambil dari tabel worker</option>
-                        <option  value="id" @if($proyek->nama_pimpinan == 'ambil dari ewe tabel worker')selected @endif>ambil dari ewe tabel worker</option>
+                        <option  value="ambil dari tabel worker" @if($proyek->nama_pimpinan == 'ambil dari tabel worker')selected @endif>ambil dari tabel worker</option>
+                        <option  value="ambil dari tabel worker" @if($proyek->nama_pimpinan == 'ambil dari ewe tabel worker')selected @endif>ambil dari ewe tabel worker</option>
                         </select>
                     </div>
 

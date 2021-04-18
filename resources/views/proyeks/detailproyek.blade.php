@@ -7,6 +7,12 @@
     <div class="card-header"><h4>Detail Proyek</h4></div>
         <div class="card-body">
             <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                @if(session('sukses'))
+                <div class="alert alert-primary">
+                {{session('sukses')}}
+                </div>
+                @endif
                 <div class="col-1 col-md-1 col-lg-12">
                 <div clas ="box-header with-border">
                 <table class = "table">
