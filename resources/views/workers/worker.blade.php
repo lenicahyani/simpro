@@ -16,7 +16,8 @@
                     <!-- <th>No</th> -->
                     <th>Nama Worker</th>                     
                     <th>Alamat</th>   
-                    <th>Role</th>  
+                    <th>Role</th> 
+                    <th>Status</th>  
                     <th>Email</th> 
                     <th>Telepon</th>      
                     <th>Action</th>
@@ -25,7 +26,8 @@
                 <tr>                   
                     <td>{{$worker->nama_worker}}</td>                      
                     <td>{{$worker->alamat}}</td>                    
-                    <td>{{$worker->role}}</td>                  
+                    <td>{{$worker->role}}</td>  
+                    <td>{{$worker->status}}</td>                  
                     <td>{{$worker->email}}</td>
                     <td>{{$worker->telepon}}</td>
                     <td><a href="/worker/{{$worker->id}}/edit" class="badge badge-warning">Edit</a></td>

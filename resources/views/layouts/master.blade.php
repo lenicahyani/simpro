@@ -48,9 +48,8 @@
               <div class="breadcrumb-item">Form</div>
             </div>
             </div>  
-
-
-            @yield('content')            
+            @yield('content') 
+          </div>
         </section>
       </div>
       <footer class="main-footer">

@@ -26,8 +26,19 @@
                     <div class="form-group">
                         <label>Role</label>
                         <select class="form-control" name="role" >
-                        <option  value="1" @if($worker->role == 'Administrator')selected @endif>Administrator</option>
-                        <option  value="2" @if($worker->role == 'Worker')selected @endif>Worker</option>
+                        <option  value="Administrator" @if($worker->role == 'Administrator')selected @endif>Administrator</option>
+                        <option  value="Worker" @if($worker->role == 'Worker')selected @endif>Worker</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select class="form-control" name="status">
+                        <option value="BACKEND PROGRAMMER" @if($worker->status == 'BACKEND PROGRAMMER')selected @endif>BACKEND PROGRAMMER</option>
+                        <option value="PM" @if($worker->status == 'PM')selected @endif>PM</option>
+                        <option value="FRONTEND PROGRAMMER" @if($worker->status == 'FRONTEND PROGRAMMER')selected @endif>FRONTEND PROGRAMMER</option>
+                        <option value="ANALIS" @if($worker->status == 'ANALIS')selected @endif>ANALIS</option>
+                        <option value="TESTER" @if($worker->status == 'TESTER')selected @endif>TESTER</option>
+                        <option value="DB DESIGNER" @if($worker->status == 'DB DESIGNER')selected @endif>DB DESIGNER</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -18,8 +18,20 @@
             <div class="form-group">
                 <label>Role</label>
                 <select class="form-control" name="role">
+                <option value="">--Pilih--</option>
                 <option>Administrator</option>
                 <option>Worker</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" name="status">
+                <option>BACKEND PROGRAMMER</option>
+                <option>PM</option>
+                <option>FRONTEND PROGRAMMER</option>
+                <option>ANALIS</option>
+                <option>TESTER</option>
+                <option>DB DESIGNER</option>
                 </select>
             </div>
             <div class="form-group">
