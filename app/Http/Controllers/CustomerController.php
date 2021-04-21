@@ -6,6 +6,21 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function _validation(Request $request){
+        $validation = $request->validate([
+            'nama_customer' => 'required',
+            'email' => 'required',
+            'telepon' => 'required',
+            'alamat' => 'required',        
+        ],
+        [
+            'nama_customer.required' => 'Harus diisi',
+            'email.required' => 'Harus diisi',
+            'telepon.required' => 'Harus diisi',
+            'alamat.required' => 'Harus diisi',                  
+        ]);
+        return $request;
+    }
     //tampilkan data customer
     public function index(){
         
@@ -23,7 +38,7 @@ class CustomerController extends Controller
 
     //menyimpan form addcustomer
     public function simpan(Request $request){      
-     
+        $this->_validation($request);
          \App\Models\Customer::create($request->all());
          return redirect ('/customer')->with('sukses','Data Berhasil Diinput');
         // return $request->all();
@@ -38,7 +53,7 @@ class CustomerController extends Controller
 
    //update customer
    public function update (Request $request, $id){     
-     
+    $this->_validation($request);
     $customer = \App\Models\Customer::find($id);
     $customer->update($request->all());
     return redirect('/customer')->with('sukses','Data Berhasil Diupdate');

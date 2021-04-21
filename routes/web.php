@@ -7,7 +7,7 @@ use App\Http\Controllers\ProyekController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LapprogresController;
-use App\Http\Controllers\SubProyekController;
+use App\Http\Controllers\SubproyekController;
 use App\Http\Controllers\LappembayaranproyekController;
 
 
@@ -37,6 +37,12 @@ Route::get('/proyek/{id}/delete', [ProyekController::class, 'delete'])->name('de
 Route::get('/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('editproyek');
 Route::post('/proyek/{id}', [ProyekController::class, 'update'])->name('updateproyek');
 Route::get('/proyek/{id}/detail', [ProyekController::class, 'detail'])->name('detailproyek');
+// // Route SubProyek
+Route::get('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
+Route::post('/proyek/simpansubproyek', [ProyekController::class, 'simpansubproyek'])->name('simpansubproyek');
+// Route::get('/proyek/{id}/deletesubproyek', [ProyekController::class, 'deletesubproyek'])->name('deletesubproyek');
+// Route::get('/proyek/{id}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
+// Route::post('/proyek/{id}', [ProyekController::class, 'updatesubproyek'])->name('updatesubproyek');
 
 //Route worker
 Route::get('/worker', [WorkerController::class, 'index'])->name('worker');
@@ -55,13 +61,12 @@ Route::get('/customer/{id}/delete', [CustomerController::class, 'delete'])->name
 Route::get('/customer/{id}/edit', [CustomerController::class, 'edit'])->name('editcustomer');
 Route::post('/customer/{id}', [CustomerController::class, 'update'])->name('updatecustomer');
 
-// Route SubProyek
-// Route::get('/subproyek', [SubProyekController::class, 'index'])->name('subproyek');
-// Route::get('/proyek/add', [SubProyekController::class, 'add'])->name('addproyek');
-// Route::post('/proyek/simpan', [SubProyekController::class, 'simpan'])->name('simpanproyek');
-// Route::delete('/proyek/delete/{proyek_id}', [SubProyekController::class, 'delete'])->name('deleteproyek');
-// Route::get('/proyek/{id}/edit', [SubProyekController::class, 'edit'])->name('editproyek');
-// Route::post('/proyek/{id}', [SubProyekController::class, 'update'])->name('updateproyek');
+// // Route SubProyek
+// Route::get('/subproyek/add', [SubproyekController::class, 'add'])->name('addsubproyek');
+// Route::post('/subproyek/simpan', [SubproyekController::class, 'simpan'])->name('simpansubproyek');
+// Route::get('/customer/{id}/delete', [SubproyekController::class, 'delete'])->name('deletesubproyek');
+// Route::get('/subproyek/{id}/edit', [SubproyekController::class, 'edit'])->name('editsubproyek');
+// Route::post('/subproyek/{id}', [SubproyekController::class, 'update'])->name('updatesubproyek');
 
 // Route Laporan
 // Route::get('/lapgaji',[App\Http\Controllers\LaporanController::class, 'lapgaji'])->name('lapgaji');
