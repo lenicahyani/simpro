@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         @if(session('sukses'))
-        <div class="alert alert-primary">
+        <div class="alert alert-success">
            {{session('sukses')}}
         </div>
         @endif

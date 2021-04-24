@@ -83,7 +83,18 @@
 </div>
 <div class="col-12 col-md-12 col-lg-12">  
     <div class="card-body">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    @if(session('suksess'))
+        <div class="alert alert-primary">
+            {{session('suksess')}}
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger">
+           {{session('error')}}
+        </div>
+    @endif
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
     Tambah Subproyek
     </button>                    
         <table class="table table-striped table-md">

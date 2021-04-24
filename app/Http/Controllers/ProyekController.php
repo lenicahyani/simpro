@@ -125,13 +125,17 @@ class ProyekController extends Controller
     //menampilkan form add subproyek    
     public function addsubproyek (Request $request,$idproyek){  
     //    dd($request->all());
-        $proyek = \App\Models\Proyek::find($idproyek);     
+        $proyek = \App\Models\Proyek::find($idproyek); 
+        if($proyek->worker()->where('worker_id',$request->worker)->exists()){
+            return redirect()->back()->with('error','Anggota Tim Sudah Ada');
+        }    
         $proyek->worker()->attach($request->worker,[
         'nama_subproyek'=>$request->nama_subproyek,
         'nilai_subproyek'=>$request->nilai_subproyek,
         'deskripsi'=>$request->deskripsi,
-        'progres'=>$request->progres]);
-        return redirect('proyek/',$idproyek.'/detailproyek')-> with('sukses','Data Berhasil Diinput'); 
+        'progres'=>$request->progres]);        
+        return redirect()->back()->with('suksess','Data Berhasil Diinput');
+        // return redirect('proyek/'.$idproyek.'/detailproyek')-> with('sukses','Data Berhasil Diinput'); 
     }
 
     // public function simpansubproyek (Request $request){  
