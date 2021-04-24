@@ -37,12 +37,12 @@ Route::get('/proyek/{id}/delete', [ProyekController::class, 'delete'])->name('de
 Route::get('/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('editproyek');
 Route::post('/proyek/{id}', [ProyekController::class, 'update'])->name('updateproyek');
 Route::get('/proyek/{id}/detail', [ProyekController::class, 'detail'])->name('detailproyek');
-// // Route SubProyek
-Route::get('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
-Route::post('/proyek/simpansubproyek', [ProyekController::class, 'simpansubproyek'])->name('simpansubproyek');
-// Route::get('/proyek/{id}/deletesubproyek', [ProyekController::class, 'deletesubproyek'])->name('deletesubproyek');
-// Route::get('/proyek/{id}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
-// Route::post('/proyek/{id}', [ProyekController::class, 'updatesubproyek'])->name('updatesubproyek');
+
+// Route Subproyek
+Route::post('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
+
+// Route::get('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
+
 
 //Route worker
 Route::get('/worker', [WorkerController::class, 'index'])->name('worker');

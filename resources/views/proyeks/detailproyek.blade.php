@@ -81,42 +81,101 @@
     </div>
 </div>
 </div>
-<div class="col-12 col-md-12 col-lg-12">   
+<div class="col-12 col-md-12 col-lg-12">  
     <div class="card-body">
-        @if(session('suksess'))
-        <div class="alert alert-primary">
-           {{session('suksess')}}
-        </div>
-        @endif
-        <a href="/proyek/{{$proyek->id}}/addsubproyek" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i>Tambah Subroyek</a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Tambah Subproyek
+    </button>                    
         <table class="table table-striped table-md">
             <tr>
                 <!-- <th>No</th> -->
-                <th>Nama Proyek</th> 
-                <th>Tim</th>           
-                <th>Nama Tugas</th>                
-                <th>Deskripsi</th>
-                <th>Nilai</th>  
-                <th>progres</th>                  
-                <th><td>Action</td></th>
+                <th>Nama Proyek</th>                            
+                <th>Nama Tugas</th>   
+                <th>Tim</th>      
+                <th>Nilai</th>         
+                <th>Deskripsi</th>                
+                <th>Progres</th>                  
+                <th>Action</th>
             </tr>           
-            @foreach($subproyek as $subproyek)
-                <tr>
-                    <td>{{$subproyek->nama_proyek}}</td>
-                    <td>{{$subproyek->tim}}</td>                    
-                    <td>{{$subproyek->nama_tugas}}</td>
-                    <td>{{$subproyek->deskripsi}}</td>
-                    <td>{{$subproyek->nilai}}</td>
-                    <td>{{$subproyek->progres}}</td>  
-                    <td><a href="/proyek/{{$subproyek->id}}/edit" class="badge badge-warning">Edit</a></td>
-                    <td><a href="/proyek/{{$subproyek->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
-                </tr>
+                @foreach($proyek->worker as $worker)
+                    <tr>
+                        <td>{{$proyek->nama_proyek}}</td>
+                        <td>{{$worker->pivot->nama_subproyek}}</td>
+                        <td>{{$worker->nama_worker}}</td>                    
+                        <td>{{$worker->pivot->nilai_subproyek}}</td>
+                        <td>{{$worker->pivot->deskripsi}}</td>
+                        <td>{{$worker->pivot->progres}}</td>
+                        <td><a href="/proyek/{{$worker->id}}/edit" class="badge badge-warning">Edit</a>
+                        <a href="/proyek/{{$worker->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
+                    </tr>
                 @endforeach   
         </table>
     </div>
 </div>
 </div>
-    
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Subproyek</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="/proyek/{{$proyek->id}}/addsubproyek" method="POST">
+            {{csrf_field()}} 
+            <div class="form-group">
+                <label for="proyek">Nama Proyek</label>
+                <select class="form-control" id="proyek" name="proyek">
+                    @foreach ($dropproyek as $pro)
+                    <option value="{{$pro->id}}">{{$pro->nama_proyek}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="worker">Nama Tim</label>
+                <select class="form-control" id="worker" name="worker">
+                    @foreach ($data_worker as $wor)
+                    <option value="{{$wor->id}}">{{$wor->nama_worker}}</option>
+                    @endforeach
+                </select>
+            </div>   
+            <div class="form-group">
+                <label>Nama Tugas</label>
+                <input name="nama_subproyek" type="text" class="form-control @error('nama_subproyek') is-invalid @enderror" value="{{old('nama_subproyek')}}">
+                @error('nama_subproyek')
+                <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+            </div> 
+            <div class="form-group">
+                <label>Nilai</label>
+                <input name="nilai_subproyek" type="text" class="form-control @error('nilai_subproyek') is-invalid @enderror" value="{{old('nilai_subproyek')}}">
+                @error('nilai_subproyek')
+                <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+            </div> 
+            <div class="form-group">
+                <label>Deskripsi</label>
+                <textarea class="form-control" value="{{old('deskripsi')}}" name="deskripsi"></textarea>
+            </div>  
+            <div class="form-group">
+                <label>Progres</label>
+                <input type="range" class="form-control" name="progres">
+            </div>   
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 @endsection
+
+@push('page-scripts')
+<script src="assets/js/page/bootstrap-modal.js"></script>
+@endpush
