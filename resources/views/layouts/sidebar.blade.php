@@ -28,7 +28,7 @@
                 </li><li class="active"><a class="nav-link" href="{{route('worker')}}"><i class="far fa-square"></i> <span>Worker</span></a></li> 
                 </li><li class="active"><a class="nav-link" href="{{route('customer')}}"><i class="far fa-square"></i> <span>Customer</span></a></li> 
                 </li><li class="active"><a class="nav-link" href="{{route('proyek')}}"><i class="far fa-square"></i> <span>Proyek</span></a></li> 
-                </li><li class="active"><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Customer</span></a></li>                              
+                </li><li class="active"><a class="nav-link" href="{{route('pembayaran')}}"><i class="far fa-square"></i> <span>Pembayaran</span></a></li>                              
           
         </aside>
       </div>

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subproyek extends Model
 {
-    protected $table = 'subproyek';
-    protected $fillable = ['nama_proyek' ,'tim','nama_tugas','deskripsi','nilai','progres'];
+    protected $table = 'proyek_worker';
+    protected $fillable = ['proyek_id','worker_id','nama_subproyek','nilai_subproyek','deskripsi','progres'];
 }

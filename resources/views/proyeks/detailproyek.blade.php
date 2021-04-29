@@ -94,7 +94,7 @@
            {{session('error')}}
         </div>
     @endif
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal1">
     Tambah Subproyek
     </button>                    
         <table class="table table-striped table-md">
@@ -116,8 +116,8 @@
                         <td>{{$worker->pivot->nilai_subproyek}}</td>
                         <td>{{$worker->pivot->deskripsi}}</td>
                         <td>{{$worker->pivot->progres}}</td>
-                        <td><a href="/proyek/{{$worker->id}}/edit" class="badge badge-warning">Edit</a>
-                        <a href="/proyek/{{$worker->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
+                        <td>
+                        <a href="/proyek/{{$proyek->id}}/{{$worker->id}}/deletesubproyek" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                     </tr>
                 @endforeach   
         </table>
@@ -126,12 +126,12 @@
 </div>
 </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Add-->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Subproyek</h5>
+        <h5 class="modal-title" id="modal1Label">Tambah Subproyek</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -157,14 +157,14 @@
             </div>   
             <div class="form-group">
                 <label>Nama Tugas</label>
-                <input name="nama_subproyek" type="text" class="form-control @error('nama_subproyek') is-invalid @enderror" value="{{old('nama_subproyek')}}">
+                <input name="nama_subproyek" type="text" class="form-control @error('nama_subproyek') is-invalid @enderror" value="{{old('nama_subproyek')}}" required>
                 @error('nama_subproyek')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div> 
             <div class="form-group">
                 <label>Nilai</label>
-                <input name="nilai_subproyek" type="text" class="form-control @error('nilai_subproyek') is-invalid @enderror" value="{{old('nilai_subproyek')}}">
+                <input name="nilai_subproyek" type="text" class="form-control @error('nilai_subproyek') is-invalid @enderror" value="{{old('nilai_subproyek')}}" required>
                 @error('nilai_subproyek')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
@@ -185,6 +185,7 @@
     </div>
   </div>
 </div>
+
 @endsection
 
 @push('page-scripts')

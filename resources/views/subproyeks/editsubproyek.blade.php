@@ -10,7 +10,7 @@
                 <div class="col-12 col-md-12 col-lg-12">
                 @if(session('sukses'))
                 <div class="alert alert-primary">
-                {{session('sukses')}}
+                {{session('sukses')}}  
                 </div>
                 @endif
                 <form action="{{ route('updateproyek',$proyek->id) }}" method="post">

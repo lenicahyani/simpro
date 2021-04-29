@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProyekController extends Controller
 {
     public function _validation(Request $request){
-        return $request->all();
+        // return $request->all();
        $validation = $request->validate([
             'customer' => 'required',
             'nama_proyek' => 'required',
@@ -18,9 +18,9 @@ class ProyekController extends Controller
             'pimpinan_proyek' => 'required',
             'status' => 'required',
             'tanggal_estimasi' => 'required',
-            'tim' => 'required',
-            'nama_tugas' => 'required',
-            'nilai' => 'required',
+            // 'tim' => 'required',
+            // 'nama_tugas' => 'required',
+            // 'nilai' => 'required',
         ],
         [
             'customer.required' => 'Harus diisi',
@@ -30,31 +30,29 @@ class ProyekController extends Controller
             'pimpinan_proyek.required' => 'Harus diisi',
             'status.required' => 'Harus diisi',
             'tanggal_estimasi.required' => 'Harus diisi',   
-            'tim.required' => 'Harus diisi',  
-            'nama_tugas.required' => 'Harus diisi',    
-            'nilai.required' => 'Harus diisi',           
+            // 'tim.required' => 'Harus diisi',  
+            // 'nama_tugas.required' => 'Harus diisi',    
+            // 'nilai.required' => 'Harus diisi',           
         ]);
        
         return $request;
     }
-    public function _validationsub(Request $request){
-        return $request->all();
-       $validation = $request->validate([
+    // public function _validationsub(Request $request){
+    // //    return $request->all();
+    //    $validationsub = $request->validate([
             
-            'nama_proyek' => 'required',
-            'tim' => 'required',
-            'nama_tugas' => 'required',
-            'nilai' => 'required',
-        ],
-        [           
-            'nilai_proyek.required' => 'Harus diisi',             
-            'tim.required' => 'Harus diisi',  
-            'nama_tugas.required' => 'Harus diisi',    
-            'nilai.required' => 'Harus diisi',           
-        ]);
+    //         'nama_proyek' => 'required',
+    //         //'nama_tugas' => 'required',
+    //         'nilai' => 'required',
+    //     ],
+    //     [           
+    //         'nilai_proyek.required' => 'Harus diisi dengan angka',             
+    //         'nama_subproyek.required' => 'Harus diisi',    
+    //        // 'nilai_subproyek.required' => 'Harus diisi',           
+    //     ]);
        
-        return $request;
-    }
+    //     return $request;
+    // }
     //tampilkan data proyek 
     public function index(){
         
@@ -83,7 +81,7 @@ class ProyekController extends Controller
         // return $request->all();
     }
 
-    //menyimpan form editproyek 
+    //muncul form editproyek 
     public function edit ($id){     
          
         $worker = Worker::all();       
@@ -104,20 +102,12 @@ class ProyekController extends Controller
     // return redirect('/proyek')->with('sukses','Data Berhasil Diupdate');
     }
 
-    //mellihat Hapus proyek 
-    public function delete ($id){      
-     
-        $proyek = \App\Models\Proyek::find($id);
-        $proyek -> delete($proyek);
-        return redirect('/proyek')->with('sukses','Data Berhasil Dihapus');
-    }
     //mellihat detail proyek dan sub proyek
-    public function detail ($id){             
-        
-        $data_worker = \App\Models\Worker::all();
+    public function detail ($id){   
+        $data_worker = Worker::all();
         $proyek = \App\Models\Proyek::find($id);
         $dropproyek = \App\Models\Proyek::all();
-        // dd($worker);
+        //dd($data_worker);
         return view('proyeks.detailproyek', compact('proyek','data_worker','dropproyek')); 
         // return view ('proyeks.detailproyek',['proyek'=>$proyek,'worker'=>worker]);  
         
@@ -125,6 +115,8 @@ class ProyekController extends Controller
     //menampilkan form add subproyek    
     public function addsubproyek (Request $request,$idproyek){  
     //    dd($request->all());
+      //  $this->_validationsub($request);
+        
         $proyek = \App\Models\Proyek::find($idproyek); 
         if($proyek->worker()->where('worker_id',$request->worker)->exists()){
             return redirect()->back()->with('error','Anggota Tim Sudah Ada');
@@ -137,14 +129,20 @@ class ProyekController extends Controller
         return redirect()->back()->with('suksess','Data Berhasil Diinput');
         // return redirect('proyek/'.$idproyek.'/detailproyek')-> with('sukses','Data Berhasil Diinput'); 
     }
-
-    // public function simpansubproyek (Request $request){  
-    //     $this->_validation($request); 
-    //     \App\Models\proyek::create($request->all())   
-    //     $subproyek = Subproyek::all();
-    //     return redirect ('/proyek')->with('sukses','Data Berhasil Diinput'); 
-    // }
-    
+    // Hapus proyek 
+    public function delete ($id){      
+        
+        $proyek = \App\Models\Proyek::find($id);
+        $proyek -> delete($proyek);
+        return redirect('/proyek')->with('sukses','Data Berhasil Dihapus');
+}
+    // Hapus subproyek 
+    public function deletesubproyek ($idproyek, $idworker){      
+     
+        $proyek = \App\Models\Proyek::find($idproyek);
+        $proyek -> worker()->detach($idworker);
+        return redirect()->back()->with('suksess','Data Berhasil Dihapus');
+    }
   
 
 }

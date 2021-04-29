@@ -17,7 +17,6 @@ class Proyek extends Model
     {
         return $this->belongsToMany(Worker::class)->withPivot(['nama_subproyek','nilai_subproyek','deskripsi','progres'])->withTimeStamps();
     }
-
 }
 
 
