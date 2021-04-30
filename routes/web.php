@@ -26,6 +26,18 @@ Route::get('/', function () {
     return view('home');
 });
 
+//registrasi
+Route::get('/registrasi', [App\Http\Controllers\OtentikasiController::class, 'registrasi'])->name('registrasi');
+Route::post('/simpanregistrasi', [App\Http\Controllers\OtentikasiController::class, 'simpanregistrasi'])->name('simpanregistrasi');
+
+//login 
+Route::get('/', [App\Http\Controllers\OtentikasiController::class, 'index'])->name('login');
+Route::post('login', [App\Http\Controllers\OtentikasiController::class, 'login'])->name('login');
+
+//logout
+Route::get('logout', [App\Http\Controllers\OtentikasiController::class, 'logout'])->name('logout');
+
+
 // Route dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
