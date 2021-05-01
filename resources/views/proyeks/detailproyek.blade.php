@@ -94,7 +94,7 @@
            {{session('error')}}
         </div>
     @endif
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal2">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal1">
     Tambah Subproyek
     </button>                    
         <table class="table table-striped table-md">

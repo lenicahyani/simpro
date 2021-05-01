@@ -21,19 +21,22 @@
                     <th>Gaji</th>       
                     <th>Action</th>
                 </tr>  
-                @foreach($gaji as $gaji)
+                @foreach($gaji as $gji)
                 <tr>                   
-                    <td>{{$gaji->worker_id}}</td>                    
-                    <td>{{$gaji->nama_subproyek}}</td>
-                    <td>{{$gaji->nilai_subproyek}}</td>                    
-                    <td>{{$gaji->deskripsi}}</td>                   
-                    <td>{{$gaji->progres}}</td>                        
-                    <td>{{$gaji->gaji}}</td>   
-                    <td><a  href="/gaji/{{$gaji->id}}/editgaji" class="badge badge-warning">Edit</a></td>
-                    <td><a href="/gaji/{{$gaji->id}}/deletegaji" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
+                    <td>{{$gji->worker_id}}</td>                    
+                    <td>{{$gji->nama_subproyek}}</td>
+                    <td>{{$gji->nilai_subproyek}}</td>                    
+                    <td>{{$gji->deskripsi}}</td>                   
+                    <td>{{$gji->progres}}</td>                        
+                    <td>{{$gji->gaji}}</td>   
+                    <td><a  href="/gaji/{{$gji->id}}/editgaji" class="badge badge-warning">Edit</a></td>
+                    <td><a href="/gaji/{{$gji->id}}/deletegaji" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                 </tr>
                 @endforeach
             </table>
+            <div class ="card-footer">
+                {{$gaji->links()}}
+            </div>
         </div>
     </div>
 </div>

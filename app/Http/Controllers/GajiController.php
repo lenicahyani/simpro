@@ -30,7 +30,7 @@ class PembayaranController extends Controller
     //tampilkan data pembayaran
     public function index()
     {
-        $pembayaran = \App\Models\Pembayaran::all();
+        $pembayaran = Pembayaran::paginate(5);
         return view('pembayarans.pembayaran',['pembayaran'=>$pembayaran]);        
     }
      

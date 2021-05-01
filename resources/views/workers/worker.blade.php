@@ -34,7 +34,10 @@
                     <td><a href="/worker/{{$worker->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                 </tr>
                 @endforeach
-            </table>            
+            </table>
+            <div class="card-footer">
+                {{$data_worker->links()}}
+            </div>            
         </div>
     </div>
 </div>

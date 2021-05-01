@@ -32,7 +32,7 @@ class PembayaranController extends Controller
     //tampilkan data pembayaran
     public function index()
     {
-        $pembayaran = \App\Models\Pembayaran::all();
+        $pembayaran = Pembayaran::all();
         return view('pembayarans.pembayaran',['pembayaran'=>$pembayaran]);        
     }
 
@@ -47,7 +47,7 @@ class PembayaranController extends Controller
     //tampilkan data gaji
     public function gaji()
     {
-        $gaji = Subproyek::all();
+        $gaji = Subproyek::paginate(5);
         $nworker = Worker::all();
         return view('gaji.gaji', compact('gaji','nworker'));           
     }

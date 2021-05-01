@@ -31,7 +31,7 @@ class WorkerController extends Controller
     //tampilkan data worker
     public function index(){
         
-        $data_worker = \App\Models\Worker::all();
+        $data_worker = \App\Models\Worker::paginate(5);
         return view('workers.worker',['data_worker'=>$data_worker]);
     
     }

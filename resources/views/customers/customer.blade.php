@@ -31,6 +31,9 @@
                 </tr>
                 @endforeach
             </table>
+            <div class ="card-footer">
+                {{$data_customer ->links()}}
+            </div>
         </div>
     </div>
 </div>

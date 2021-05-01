@@ -24,7 +24,7 @@ class CustomerController extends Controller
     //tampilkan data customer
     public function index(){
         
-        $data_customer = \App\Models\Customer::all();
+        $data_customer = \App\Models\Customer::paginate(5);
         return view('customers.customer',['data_customer'=>$data_customer]);
     
     }
