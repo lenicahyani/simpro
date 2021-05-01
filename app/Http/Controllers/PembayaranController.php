@@ -47,16 +47,14 @@ class PembayaranController extends Controller
 
     //tampilkan data gaji
     public function gaji()
-    {
-        $gaji = DB::table('proyek_worker')
+    {        
+        $gaji = DB::table('proyek_worker') 
         ->join('worker','proyek_worker.worker_id', '=', 'worker.id')
         ->select('worker.nama_worker','proyek_worker.*')
         ->get();
-
-        $gaj = Subproyek::paginate(5);
-        // $nworker = Worker::all();
+       
         // dd($gaji);
-        return view('gaji.gaji', compact('gaji','gaj'));           
+        return view('gaji.gaji', compact('gaji'));           
     }
      
     //memampilkan form addpembayran

@@ -108,7 +108,10 @@ class ProyekController extends Controller
         'nama_subproyek'=>$request->nama_subproyek,
         'nilai_subproyek'=>$request->nilai_subproyek,
         'deskripsi'=>$request->deskripsi,
-        'progres'=>$request->progres]);        
+        'progres'=>$request->progres,
+        'gaji'=>$request->gaji = 'Belum Dibayar',
+        ]);       
+
         return redirect()->back()->with('suksess','Data Berhasil Diinput');
         // return redirect('proyek/'.$idproyek.'/detailproyek')-> with('sukses','Data Berhasil Diinput'); 
     }

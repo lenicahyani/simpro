@@ -34,9 +34,7 @@
                 </tr>
                 @endforeach
             </table>
-            <div class ="card-footer">
-                {{$gaj->links()}}
-            </div>
+            
         </div>
     </div>
 </div>
