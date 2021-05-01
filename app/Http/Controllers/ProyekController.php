@@ -35,7 +35,7 @@ class ProyekController extends Controller
     //tampilkan data proyek 
     public function index(){
         
-        $data_proyek = \App\Models\Proyek::all();
+        $data_proyek = \App\Models\Proyek::paginate(5);
         return view('proyeks.proyek',['data_proyek'=>$data_proyek]);
     
     }

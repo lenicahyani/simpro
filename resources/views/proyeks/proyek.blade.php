@@ -35,6 +35,9 @@
                 </tr>
                 @endforeach
             </table>
+            <div class="card-footer">
+                {{$data_proyek->links()}}
+            </div>
         </div>
     </div>
 </div>

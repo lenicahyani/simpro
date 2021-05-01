@@ -34,7 +34,7 @@
                     <td><a href="/worker/{{$worker->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                 </tr>
                 @endforeach
-            </table>
+            </table>            
         </div>
     </div>
 </div>
