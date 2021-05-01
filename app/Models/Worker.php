@@ -13,8 +13,8 @@ class Worker extends Model
     {
         return $this->belongsToMany(Proyek::class)->withPivot(['nama_subproyek','nilai_subproyek','deskripsi','progres','gaji']);
     }
-    public function subproyek()
-    {
-        return $this->belongsToMany(Proyek::class);
-    }
+    // public function subproyek()
+    // {
+    //     return $this->belongsToMany(Subproyek::class);
+    // }
 }

@@ -105,8 +105,7 @@
                 <th>Tim</th>      
                 <th>Nilai</th>         
                 <th>Deskripsi</th>                
-                <th>Progres</th>   
-                <th>Gaji</th>                 
+                <th>Progres</th>              
                 <th>Action</th>
             </tr>           
                 @foreach($proyek->worker as $worker)
@@ -117,7 +116,6 @@
                         <td>{{$worker->pivot->nilai_subproyek}}</td>
                         <td>{{$worker->pivot->deskripsi}}</td>
                         <td>{{$worker->pivot->progres}}</td>
-                        <td>{{$worker->pivot->gaji}}</td>
                         <td>
                         <a href="/proyek/{{$proyek->id}}/{{$worker->id}}/deletesubproyek" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                     </tr>

@@ -23,7 +23,7 @@
                 </tr>  
                 @foreach($gaji as $gji)
                 <tr>                   
-                    <td>{{$gji->worker_id}}</td>                    
+                    <td>{{$gji->nama_worker}}</td>                    
                     <td>{{$gji->nama_subproyek}}</td>
                     <td>{{$gji->nilai_subproyek}}</td>                    
                     <td>{{$gji->deskripsi}}</td>                   
@@ -35,7 +35,7 @@
                 @endforeach
             </table>
             <div class ="card-footer">
-                {{$gaji->links()}}
+                {{$gaj->links()}}
             </div>
         </div>
     </div>

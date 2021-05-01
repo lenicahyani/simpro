@@ -6,6 +6,7 @@ use App\Models\Worker;
 use App\Models\Subproyek;
 use App\Models\Customer;
 use App\Models\Proyek;
+use DB;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -47,9 +48,15 @@ class PembayaranController extends Controller
     //tampilkan data gaji
     public function gaji()
     {
-        $gaji = Subproyek::paginate(5);
-        $nworker = Worker::all();
-        return view('gaji.gaji', compact('gaji','nworker'));           
+        $gaji = DB::table('proyek_worker')
+        ->join('worker','proyek_worker.worker_id', '=', 'worker.id')
+        ->select('worker.nama_worker','proyek_worker.*')
+        ->get();
+
+        $gaj = Subproyek::paginate(5);
+        // $nworker = Worker::all();
+        // dd($gaji);
+        return view('gaji.gaji', compact('gaji','gaj'));           
     }
      
     //memampilkan form addpembayran

@@ -40,7 +40,8 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::all();
         $customer = Customer::all();
         $proyek = Proyek::all();
-        return view('pembayarans.addpembayaran', compact('proyek','customer','pembayaran'));       
+        $worker = Worker::all();
+        return view('pembayarans.addpembayaran', compact('proyek','customer','pembayaran','worker'));       
     }
    //menyimpan form editpembayaran
    public function edit ($id){   
