@@ -22,18 +22,15 @@
             <div class="form-group">
                 <label>Progres</label>
                 <input name="progres" type="text" class="form-control" value="{{$gaji->progres}}">
-            </div>
+            </div>            
             <div class="form-group">
                 <label>Gaji</label>
-                <select name="status" class="form-control @error('status') is-invalid @enderror" >
+                <select name="gaji" class="form-control" >
                 <option value="">--Pilih--</option>
-                <option value="Belum Dibayar">Belum Dibayar</option>
-                <option value="Sedang Diproses">Sedang Diproses</option>
-                <option value="Sudah Dibayar">Sudah Dibayar</option>
-                </select>
-                @error('status')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
+                <option value="Belum Dibayar" @if($gaji->gaji == 'Belum Dibayar')selected @endif>Belum Dibayar</option>
+                <option value="Sedang Diproses" @if($gaji->gaji == 'Sedang Diproser')selected @endif>Sedang Diproses</option>
+                <option value="Sudah Dibayar" @if($gaji->gaji == 'Sudah Dibayar')selected @endif>Sudah Dibayar</option>
+                </select>               
             </div>  
              
             

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Worker;
 use App\Models\Proyek;
+use App\Models\Customer;
 use App\Models\Subproyek;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -43,8 +44,9 @@ class ProyekController extends Controller
     public function add(){      
         
         $worker = Worker::all();
+        $custom = Customer::all();
         $proyek = \App\Models\Proyek::all();
-        return view('proyeks.addproyek', compact('proyek','worker'));
+        return view('proyeks.addproyek', compact('proyek','custom','worker'));
         // return view('proyeks.addproyek', compact('worker'));
         // $data_proyek = \App\Models\Proyek::all();
         // return view('proyeks.addproyek',['data_proyek'=>$data_proyek]);
@@ -63,9 +65,10 @@ class ProyekController extends Controller
     //muncul form editproyek 
     public function edit ($id){     
          
+        $custom = Customer::all();
         $worker = Worker::all();       
         $proyek = \App\Models\Proyek::find($id);
-        return view('proyeks.editproyek', compact('proyek','worker'));
+        return view('proyeks.editproyek', compact('proyek','worker','custom'));
         // return view ('proyeks.editproyek',['proyek' => $proyek ]);   
    }
 

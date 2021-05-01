@@ -6,13 +6,21 @@
 <div class="card">
     <div class="card-header"><h4>Edit Proyek</h4></div>
         <div class="card-body">
-            <div class="row">               
-                <form action="{{ route('updateproyek',$proyek->id) }}" method="post">
-                    {{csrf_field()}}
+                <div class="row">               
+                    <form action="{{ route('updateproyek',$proyek->id) }}" method="post">
+                        {{csrf_field()}}
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input name="customer" type="text" class="form-control" value="{{$proyek->customer}}">
-                    </div>
+                        <select name="customer" class="form-control @error('customer') is-invalid @enderror">
+                            <option value="">--Pilih--</option>
+                            @foreach ($custom as $item)
+                            <option value="{{$item->nama_customer}}"{{old('customer') == $item->nama_customer ? 'selected': null}}>{{$item->nama_customer}}</option>
+                            @endforeach
+                        </select>
+                        @error('customer')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>                   
                     <div class="form-group">
                         <label>Nama Proyek</label>
                         <input name="nama_proyek" type="text" class="form-control" value="{{$proyek->nama_proyek}}">

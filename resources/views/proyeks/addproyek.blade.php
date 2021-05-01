@@ -9,11 +9,16 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label>Nama Customer</label>
-                <input name="customer" type="text" class="form-control @error('customer') is-invalid @enderror" value="{{old('customer')}}">
+                <select name="customer" class="form-control @error('customer') is-invalid @enderror">
+                    <option value="">--Pilih--</option>
+                    @foreach ($custom as $item)
+                    <option value="{{$item->nama_customer}}"{{old('customer') == $item->nama_customer ? 'selected': null}}>{{$item->nama_customer}}</option>
+                    @endforeach
+                </select>
                 @error('customer')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
-            </div>
+            </div>           
             <div class="form-group">
                 <label>Nama Proyek</label>
                 <input name="nama_proyek" type="text" class="form-control @error('nama_proyek') is-invalid @enderror" value="{{old('nama_proyek')}}">
