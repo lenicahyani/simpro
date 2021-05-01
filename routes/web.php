@@ -35,6 +35,9 @@ Route::post('/simpanregistrasi', [OtentikasiController::class, 'simpanregistrasi
 Route::get('/', [OtentikasiController::class, 'index'])->name('login');
 Route::post('login', [OtentikasiController::class, 'login'])->name('login');
 
+//membatasi hak akses
+Route::group(['middleware' =>['auth']], function() {
+
 //logout
 Route::get('logout', [OtentikasiController::class, 'logout'])->name('logout');
 
@@ -89,3 +92,4 @@ Route::get('/gaji/addgaji', [PembayaranController::class, 'addgaji'])->name('add
 // Route::get('/gaji/{id}/edit', [PembayaranController::class, 'edit'])->name('editgaji');
 // Route::post('/gaji/{id}', [PembayaranController::class, 'update'])->name('updategaji');
 
+});
