@@ -28,8 +28,8 @@
                     <td>{{$pembayaran->termin}}</td>                    
                     <td>{{$pembayaran->tanggal_bayar}}</td>                    
                     <td>{{$pembayaran->total_bayar}}</td>
-                    <td><a href="#" class="badge badge-warning">Edit</a></td>
-                    <td><a href="#" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
+                    <td><a  href="/pembayaran/{{$pembayaran->id}}/edit" class="badge badge-warning">Edit</a></td>
+                    <td><a href="/pembayaran/{{$pembayaran->id}}/delete" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                 </tr>
                 @endforeach
             </table>

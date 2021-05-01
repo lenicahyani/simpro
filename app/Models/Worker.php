@@ -11,6 +11,6 @@ class Worker extends Model
 
     public function proyek()
     {
-        return $this->belongsToMany(Proyek::class)->withPivot(['nama_subproyek','nilai_subproyek','deskripsi','progres']);
+        return $this->belongsToMany(Proyek::class)->withPivot(['nama_subproyek','nilai_subproyek','deskripsi','progres','gaji']);
     }
 }

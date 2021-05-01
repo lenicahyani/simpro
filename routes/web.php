@@ -9,6 +9,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LapprogresController;
 use App\Http\Controllers\SubproyekController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\OtentikasiController;
 
 
 /*
@@ -27,15 +28,15 @@ Route::get('/', function () {
 });
 
 //registrasi
-Route::get('/registrasi', [App\Http\Controllers\OtentikasiController::class, 'registrasi'])->name('registrasi');
-Route::post('/simpanregistrasi', [App\Http\Controllers\OtentikasiController::class, 'simpanregistrasi'])->name('simpanregistrasi');
+Route::get('/registrasi', [OtentikasiController::class, 'registrasi'])->name('registrasi');
+Route::post('/simpanregistrasi', [OtentikasiController::class, 'simpanregistrasi'])->name('simpanregistrasi');
 
 //login 
-Route::get('/', [App\Http\Controllers\OtentikasiController::class, 'index'])->name('login');
-Route::post('login', [App\Http\Controllers\OtentikasiController::class, 'login'])->name('login');
+Route::get('/', [OtentikasiController::class, 'index'])->name('login');
+Route::post('login', [OtentikasiController::class, 'login'])->name('login');
 
 //logout
-Route::get('logout', [App\Http\Controllers\OtentikasiController::class, 'logout'])->name('logout');
+Route::get('logout', [OtentikasiController::class, 'logout'])->name('logout');
 
 
 // Route dashboard
@@ -74,9 +75,17 @@ Route::post('/customer/{id}', [CustomerController::class, 'update'])->name('upda
 
 // Route Pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
-// Route::get('/pembayaran/add', [PembayaranController::class, 'add'])->name('addpembayaran');
-// Route::post('/customer/simpan', [CustomerController::class, 'simpan'])->name('simpancustomer');
-// Route::get('/customer/{id}/delete', [CustomerController::class, 'delete'])->name('deletecustomer');
-// Route::get('/customer/{id}/edit', [CustomerController::class, 'edit'])->name('editcustomer');
-// Route::post('/customer/{id}', [CustomerController::class, 'update'])->name('updatecustomer');
+Route::get('/pembayaran/add', [PembayaranController::class, 'add'])->name('addpembayaran');
+Route::post('/pembayaran/simpan', [PembayaranController::class, 'simpan'])->name('simpanpembayaran');
+Route::get('/pembayaran/{id}/delete', [PembayaranController::class, 'delete'])->name('deletepembayaran');
+Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('editpembayaran');
+Route::post('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('updatepembayaran');
+
+// Route Gaji
+Route::get('/gaji', [PembayaranController::class, 'gaji'])->name('gaji');
+Route::get('/gaji/addgaji', [PembayaranController::class, 'addgaji'])->name('addgaji');
+// Route::post('/gaji/simpan', [PembayaranController::class, 'simpan'])->name('simpangaji');
+// Route::get('/gaji/{id}/delete', [PembayaranController::class, 'delete'])->name('deletegaji');
+// Route::get('/gaji/{id}/edit', [PembayaranController::class, 'edit'])->name('editgaji');
+// Route::post('/gaji/{id}', [PembayaranController::class, 'update'])->name('updategaji');
 

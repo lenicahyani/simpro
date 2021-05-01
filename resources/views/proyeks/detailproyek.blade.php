@@ -4,17 +4,17 @@
 
 <div class="col-12 col-md-12 col-lg-12">
 <div class="card-body">
-    <ul class="nav nav-pills">
+    <!-- <ul class="nav nav-pills">
         <li class="nav-item">
         <a class="nav-link active" href="#"><i class="fas fa-home"></i> Subprojek</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-user"></i>Tim</a>
+        <a class="nav-link" href="{{route('pembayaran')}}"><i class="fas fa-money"></i>Pembayaran</a>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-cog"></i> Setting</a>
         </li>
-    </ul>
+    </ul> -->
 </div>
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
@@ -105,7 +105,8 @@
                 <th>Tim</th>      
                 <th>Nilai</th>         
                 <th>Deskripsi</th>                
-                <th>Progres</th>                  
+                <th>Progres</th>   
+                <th>Gaji</th>                 
                 <th>Action</th>
             </tr>           
                 @foreach($proyek->worker as $worker)
@@ -116,6 +117,7 @@
                         <td>{{$worker->pivot->nilai_subproyek}}</td>
                         <td>{{$worker->pivot->deskripsi}}</td>
                         <td>{{$worker->pivot->progres}}</td>
+                        <td>{{$worker->pivot->gaji}}</td>
                         <td>
                         <a href="/proyek/{{$proyek->id}}/{{$worker->id}}/deletesubproyek" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a></td>
                     </tr>
