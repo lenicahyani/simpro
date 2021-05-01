@@ -22,7 +22,7 @@ class OtentikasiController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function registrasi(){

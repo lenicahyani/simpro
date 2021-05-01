@@ -48,8 +48,8 @@ class PembayaranController extends Controller
     public function gaji()
     {
         $gaji = Subproyek::all();
-        $nproyek = Proyek::all();
-        return view('gaji.gaji', compact('gaji','nproyek'));           
+        $nworker = Worker::all();
+        return view('gaji.gaji', compact('gaji','nworker'));           
     }
      
     //memampilkan form addpembayran

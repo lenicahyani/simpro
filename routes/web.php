@@ -23,24 +23,25 @@ use App\Http\Controllers\OtentikasiController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 //registrasi
 Route::get('/registrasi', [OtentikasiController::class, 'registrasi'])->name('registrasi');
 Route::post('/simpanregistrasi', [OtentikasiController::class, 'simpanregistrasi'])->name('simpanregistrasi');
 
 //login 
-Route::get('/', [OtentikasiController::class, 'index'])->name('login');
+Route::get('/login', [OtentikasiController::class, 'index'])->name('login');
 Route::post('login', [OtentikasiController::class, 'login'])->name('login');
-
-//membatasi hak akses
-Route::group(['middleware' =>['auth']], function() {
 
 //logout
 Route::get('logout', [OtentikasiController::class, 'logout'])->name('logout');
 
+//membatasi hak akses
+Route::group(['middleware' =>['auth']], function() {
+
+    Route::get('/', function () {
+        return view('home');
+    });
 
 // Route dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
