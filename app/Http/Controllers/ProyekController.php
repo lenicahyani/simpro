@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Worker;
+use App\Models\Proyek;
 use App\Models\Subproyek;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -18,9 +19,6 @@ class ProyekController extends Controller
             'pimpinan_proyek' => 'required',
             'status' => 'required',
             'tanggal_estimasi' => 'required',
-            // 'tim' => 'required',
-            // 'nama_tugas' => 'required',
-            // 'nilai' => 'required',
         ],
         [
             'customer.required' => 'Harus diisi',
@@ -29,30 +27,11 @@ class ProyekController extends Controller
             'termin.required' => 'Harus diisi',
             'pimpinan_proyek.required' => 'Harus diisi',
             'status.required' => 'Harus diisi',
-            'tanggal_estimasi.required' => 'Harus diisi',   
-            // 'tim.required' => 'Harus diisi',  
-            // 'nama_tugas.required' => 'Harus diisi',    
-            // 'nilai.required' => 'Harus diisi',           
+            'tanggal_estimasi.required' => 'Harus diisi',  
         ]);
        
         return $request;
     }
-    // public function _validationsub(Request $request){
-    // //    return $request->all();
-    //    $validationsub = $request->validate([
-            
-    //         'nama_proyek' => 'required',
-    //         //'nama_tugas' => 'required',
-    //         'nilai' => 'required',
-    //     ],
-    //     [           
-    //         'nilai_proyek.required' => 'Harus diisi dengan angka',             
-    //         'nama_subproyek.required' => 'Harus diisi',    
-    //        // 'nilai_subproyek.required' => 'Harus diisi',           
-    //     ]);
-       
-    //     return $request;
-    // }
     //tampilkan data proyek 
     public function index(){
         
@@ -105,10 +84,11 @@ class ProyekController extends Controller
     //mellihat detail proyek dan sub proyek
     public function detail ($id){   
         $data_worker = Worker::all();
-        $proyek = \App\Models\Proyek::find($id);
+        $sub = \App\Models\Subproyek::all();
         $dropproyek = \App\Models\Proyek::all();
-        //dd($data_worker);
-        return view('proyeks.detailproyek', compact('proyek','data_worker','dropproyek')); 
+        $proyek = \App\Models\Proyek::find($id);
+        // dd($subproyek);
+        return view('proyeks.detailproyek', compact('proyek','sub','data_worker','dropproyek')); 
         // return view ('proyeks.detailproyek',['proyek'=>$proyek,'worker'=>worker]);  
         
    }
@@ -129,6 +109,15 @@ class ProyekController extends Controller
         return redirect()->back()->with('suksess','Data Berhasil Diinput');
         // return redirect('proyek/'.$idproyek.'/detailproyek')-> with('sukses','Data Berhasil Diinput'); 
     }
+    //muncul form editsubproyek 
+    public function editsubproyek ($id){  
+        // $dd($proyek);
+        $worker = Worker::all();
+        $proyek = Proyek::all();
+        $subproyek = Subproyek::find($id);         
+        return view('proyeks.detailproyek', compact('subproyek','worker','proyek'));
+        // return redirect()->back()->with('suksess','Data Berhasil Diinput');
+   }
     // Hapus proyek 
     public function delete ($id){      
         

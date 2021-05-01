@@ -56,6 +56,7 @@ Route::get('/proyek/{id}/detail', [ProyekController::class, 'detail'])->name('de
 
 // Route Subproyek
 Route::post('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
+Route::get('/proyek/{id}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
 Route::get('/proyek/{id}/{idworker}/deletesubproyek', [ProyekController::class, 'deletesubproyek'])->name('deletesubproyek');
 
 
@@ -86,10 +87,9 @@ Route::post('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('
 
 // Route Gaji
 Route::get('/gaji', [PembayaranController::class, 'gaji'])->name('gaji');
-Route::get('/gaji/addgaji', [PembayaranController::class, 'addgaji'])->name('addgaji');
-// Route::post('/gaji/simpan', [PembayaranController::class, 'simpan'])->name('simpangaji');
-// Route::get('/gaji/{id}/delete', [PembayaranController::class, 'delete'])->name('deletegaji');
-// Route::get('/gaji/{id}/edit', [PembayaranController::class, 'edit'])->name('editgaji');
-// Route::post('/gaji/{id}', [PembayaranController::class, 'update'])->name('updategaji');
+Route::post('/gaji/simpangaji', [PembayaranController::class, 'simpangaji'])->name('simpangaji');
+Route::get('/gaji/{id}/deletegaji', [PembayaranController::class, 'deletegaji'])->name('deletegaji');
+Route::get('/gaji/{id}/editgaji', [PembayaranController::class, 'editgaji'])->name('editgaji');
+Route::post('/gaji/{id}', [PembayaranController::class, 'updategaji'])->name('updategaji');
 
 });
