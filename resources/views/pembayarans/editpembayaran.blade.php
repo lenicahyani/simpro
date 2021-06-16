@@ -26,11 +26,7 @@
                             <option value="{{$item->nama_proyek}}"{{old('nama_proyek',$pembayaran->nama_proyek) == $item->nama_proyek ? 'selected': null}}>{{$item->nama_proyek}}</option>
                             @endforeach
                         </select>                       
-                    </div>   
-                    <div class="form-group">
-                        <label>Termin</label>
-                        <input name="termin" type="text" class="form-control" value="{{$pembayaran->termin}}">
-                    </div>
+                    </div>                       
                     <div class="form-group">
                         <label>Tanggal Bayar</label>
                         <input name="tanggal_bayar" type="text" class="form-control" value="{{$pembayaran->tanggal_bayar}}">

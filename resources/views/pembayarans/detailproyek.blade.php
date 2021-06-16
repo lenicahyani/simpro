@@ -57,11 +57,6 @@
     </tr>
 
     <tr>
-        <td> termin </td>
-        <td>{{ $proyek->termin}}</td>
-    </tr>
-
-    <tr>
         <td> Pimpinan Proyek </td>
         <td>{{ $proyek->pimpinan_proyek}}</td>
     </tr>

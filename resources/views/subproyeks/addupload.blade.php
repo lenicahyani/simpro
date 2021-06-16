@@ -14,11 +14,7 @@
                 </div>
                 @endif
                 <form action="{{ route('updatesubproyek', $subproyek->id) }}" method="post" enctype="multipart/form-data">
-                    {{csrf_field()}}                   
-                    <div class="form-group">
-                        <label>Progres</label>
-                        <input name="progres" type="range" class="form-control" value="{{$subproyek->progres}}">
-                    </div>  
+                    {{csrf_field()}} 
                     <label>Upload File</label>
                         <input name="upload" type="file" class="form-control @error('upload') is-invalid @enderror" value="{{old('upload')}}">
                         @error('upload')

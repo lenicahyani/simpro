@@ -7,7 +7,7 @@
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
-              <li class="menu-header">Dashboard</li>
+              <li class="menu-header">Home</li>
               <li class="nav-item dropdown">
                 <a  href="{{route('dashboard')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
@@ -21,7 +21,7 @@
                 </li><li class="active"><a class="nav-link" href="{{route('customer')}}"><i class="far fa-square"></i> <span>Customer</span></a></li> 
                 </li><li class="active"><a class="nav-link" href="{{route('proyek')}}"><i class="far fa-square"></i> <span>Proyek</span></a></li> 
                 </li><li class="active"><a class="nav-link" href="{{route('pembayaran')}}"><i class="far fa-square"></i> <span>Pembayaran</span></a></li>                      
-                </li><li class="active"><a class="nav-link" href="{{route('gaji')}}"><i class="far fa-square"></i> <span>Gaji Pegawai</span></a></li>                              
+                </li><li class="active"><a class="nav-link" href="{{route('indexgaji')}}"><i class="far fa-square"></i> <span>Gaji Pegawai</span></a></li>                              
                 
         </aside>
       </div>

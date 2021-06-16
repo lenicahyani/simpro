@@ -9,19 +9,19 @@
             {{csrf_field()}} 
             <div class="form-group">
                 <label>Nama Tugas</label>
-                <input name="nama_subproyek" type="text" class="form-control" value="{{$gaji->nama_subproyek}}">
+                <input name="nama_subproyek" type="text" class="form-control" value="{{$gaji->nama_subproyek}} " disabled>                
             </div> 
             <div class="form-group">
                 <label>Nilai Tugas</label>
-                <input name="nilai_subproyek" type="text" class="form-control" value="{{$gaji->nilai_subproyek}}">
+                <input name="nilai_subproyek" type="text" class="form-control" value="{{$gaji->nilai_subproyek}}" disabled>
             </div>
             <div class="form-group">
                 <label>Deskripsi</label>
-                <input name="deskripsi" type="text" class="form-control" value="{{$gaji->deskripsi}}">
+                <input name="deskripsi" type="text" class="form-control" value="{{$gaji->deskripsi}}" disabled>
             </div>
             <div class="form-group">
                 <label>Progres</label>
-                <input name="progres" type="text" class="form-control" value="{{$gaji->progres}}">
+                <input name="progres" type="text" class="form-control" value="{{$gaji->progres}}" disabled>
             </div>            
             <div class="form-group">
                 <label>Gaji</label>
@@ -32,7 +32,7 @@
                 <option value="Sudah Dibayar" @if($gaji->gaji == 'Sudah Dibayar')selected @endif>Sudah Dibayar</option>
                 </select>               
             </div>  
-             
+            <input type="hidden" name="id_kgji" id="id_kgji" value="{{$id}}">
             
       </div>
       <div class="modal-footer">

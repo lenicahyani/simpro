@@ -11,16 +11,25 @@
                         {{csrf_field()}}
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <select name="customer" class="form-control @error('customer') is-invalid @enderror">
+                        <select name="customer" class="form-control">
                             <option value="">--Pilih--</option>
-                            @foreach ($custom as $item)
-                            <option value="{{$item->nama_customer}}"{{old('customer') == $item->nama_customer ? 'selected': null}}>{{$item->nama_customer}}</option>
+                            @foreach ($custom as $cus)
+                            <option value="{{$cus->nama_customer}}"{{old('customer',$proyek->customer) == $cus->nama_customer ? 'selected': null}}>{{$cus->nama_customer}}</option>
                             @endforeach
                         </select>
                         @error('customer')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
-                    </div>                   
+                    </div>  
+                    <div class="form-group">
+                        <label>Nama Pimpinan</label>
+                        <select name="pimpinan_proyek" class="form-control">
+                            <option value="">--Pilih--</option>
+                            @foreach ($worker as $item)
+                            <option value="{{$item->nama_worker}}"{{old('pimpinan_proyek',$proyek->pimpinan_proyek) == $item->nama_worker ? 'selected': null}}>{{$item->nama_worker}}</option>
+                            @endforeach
+                        </select>                       
+                    </div>                  
                     <div class="form-group">
                         <label>Nama Proyek</label>
                         <input name="nama_proyek" type="text" class="form-control" value="{{$proyek->nama_proyek}}">
@@ -33,20 +42,6 @@
                         <label>Harga Proyek</label>
                         <input name="nilai_proyek" type="text" class="form-control" value="{{$proyek->nilai_proyek}}">
                     </div>
-                    <div class="form-group">
-                        <label>Termin</label>
-                        <input name="termin" type="text" class="form-control" value="{{$proyek->termin}}">
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Pimpinan</label>
-                        <select name="pimpinan_proyek" class="form-control">
-                            <option value="">--Pilih--</option>
-                            @foreach ($worker as $item)
-                            <option value="{{$item->nama_worker}}"{{old('pimpinan_proyek',$proyek->pimpinan_proyek) == $item->nama_worker ? 'selected': null}}>{{$item->nama_worker}}</option>
-                            @endforeach
-                        </select>                       
-                    </div>     
-
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">

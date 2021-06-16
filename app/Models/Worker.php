@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Worker extends Model
 {
     protected $table = 'worker';
-    protected $fillable = ['nama_worker' ,'alamat','role','status','email','telepon'];
+    protected $fillable = ['id','nama_worker' ,'alamat','role','status','email','telepon'];
 
     public function proyek()
     {
-        return $this->belongsToMany(Proyek::class)->withPivot(['nama_subproyek','nilai_subproyek','deskripsi','progres','gaji']);
+        return $this->belongsToMany(Proyek::class)->withPivot(['id','nama_subproyek','upload','nilai_subproyek','deskripsi','progres','gaji']);
     }
     // public function subproyek()
     // {

@@ -30,14 +30,7 @@
                 @error('nama_proyek')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
-            </div> 
-            <div class="form-group">
-                <label>Termin</label>
-                <input name="termin" type="text" class="form-control @error('termin') is-invalid @enderror"  value="{{old('termin')}}">
-                @error('termin')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
-            </div> 
+            </div>             
             <div class="form-group">
                 <label>Tanggal Bayar</label>
                 <input name="tanggal_bayar" type="date" class="form-control @error('tanggal_bayar') is-invalid @enderror" value="{{old('tanggal_bayar')}}">

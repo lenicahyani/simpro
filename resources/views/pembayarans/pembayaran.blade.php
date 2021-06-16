@@ -16,7 +16,6 @@
                     <!-- <th>No</th> -->
                     <th>Nama Customer</th>
                     <th>Nama Proyek</th> 
-                    <th>Termin</th>  
                     <th>Tanggal Bayar</th>  
                     <th>Total Bayar</th>       
                     <th>Action</th>
@@ -24,8 +23,7 @@
                 @foreach($pembayaran as $pembayaran)
                 <tr>                   
                     <td>{{$pembayaran->customer}}</td>                    
-                    <td>{{$pembayaran->nama_proyek}}</td>
-                    <td>{{$pembayaran->termin}}</td>                    
+                    <td>{{$pembayaran->nama_proyek}}</td>              
                     <td>{{$pembayaran->tanggal_bayar}}</td>                    
                     <td>{{$pembayaran->total_bayar}}</td>
                     <td><a  href="/pembayaran/{{$pembayaran->id}}/edit" class="badge badge-warning">Edit</a></td>

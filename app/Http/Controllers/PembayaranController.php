@@ -45,16 +45,34 @@ class PembayaranController extends Controller
         // return $request->all();
     }
 
+    public function indexgaji()
+    {
+        $proyek = Proyek::all();
+        return view('gaji.indexgaji',['proyek'=>$proyek]);        
+    }
     //tampilkan data gaji
-    public function gaji()
-    {        
-        $gaji = DB::table('proyek_worker') 
+    public function gaji($id)
+    {
+        
+        // $gaji = DB::table('proyek_worker')
+        // ->join('worker','proyek_worker.worker_id', '=', 'worker.id')
+        // ->select('worker.nama_worker','proyek_worker.*')
+        // ->get();
+        $detailgaji = DB::table('proyek')
+        ->join('proyek_worker','proyek.id', '=', 'proyek_worker.proyek_id')
         ->join('worker','proyek_worker.worker_id', '=', 'worker.id')
-        ->select('worker.nama_worker','proyek_worker.*')
+        // ->join('proyek_worker','worker.id', '=', 'proyek_worker.worker_id')
+        ->where('proyek.id', '=', $id)
+        ->select('proyek_worker.id AS id_sub','worker.nama_worker','proyek.id','proyek.nama_proyek',
+        'proyek_worker.nama_subproyek','proyek_worker.nilai_subproyek',
+        'proyek_worker.deskripsi','proyek_worker.gaji', 'proyek_worker.progres')
+        // ->select('*')
         ->get();
        
-        // dd($gaji);
-        return view('gaji.gaji', compact('gaji'));           
+        $gaj = Subproyek::paginate(5);
+        // $sub1 = Subproyek::all($id);
+        // dd($detailgaji);
+        return view('gaji.detailgaji', compact('detailgaji','gaj'));           
     }
      
     //memampilkan form addpembayran
@@ -69,27 +87,36 @@ class PembayaranController extends Controller
     
    //menyimpan form editpembayaran
    public function edit ($id){   
-
+    // kurang lengkap edit pembayaran
     $customer = Customer::all();
     $proyek = Proyek::all();
     $pembayaran = Pembayaran::find($id);
+    // dd($id);
      return view ('pembayarans.editpembayaran', compact('proyek','customer','pembayaran'));  
     }
     
      //menyimpan form editpembayaran
-   public function editgaji ($id){   
-
-    $gaji = Subproyek::find($id);
+   public function editgaji ($id,$id_sub){   
+   
+    $gaji = Subproyek::find($id_sub);
     $nproyek = Proyek::all();
-    return view('gaji.editgaji', compact('gaji','nproyek')); 
+    // dd($id_sub);
+    return view('gaji.editgaji', compact('gaji','nproyek','id')); 
 }
     //update Gaji
-    public function updategaji (Request $request, $id){     
+    public function updategaji (Request $request, $id_sub){     
         // $this->_validation($request);
-        $gaji = Subproyek::find($id);
+        // dd($id_sub);
+        $gaji = Subproyek::find($id_sub);
+        $id_kgji = $request->id_kgji;
+        dd($id_kgji);
+        // echo $id_kgji;
         $gaji->update($request->all());
-        return redirect('/gaji')->with('sukses','Data Berhasil Diupdate');
-        }
+       
+        // return redirect()->back()->with('suksess','Data Berhasil Diupdate');
+        return redirect()->to('/indexgaji/'.$id_kgji.'/detailgaji')->with('sukses','Data Berhasil Diupdate');
+        // return view ('gaji.detailgaji',['proyek' => $proyek ]);       
+    }
 
     //update Pembayaran
     public function update (Request $request, $id){     

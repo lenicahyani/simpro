@@ -52,14 +52,17 @@ Route::get('/proyek/add', [ProyekController::class, 'add'])->name('addproyek');
 Route::post('/proyek/simpan', [ProyekController::class, 'simpan'])->name('simpanproyek');
 Route::get('/proyek/{id}/delete', [ProyekController::class, 'delete'])->name('deleteproyek');
 Route::get('/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('editproyek');
-Route::post('/proyek/{id}', [ProyekController::class, 'update'])->name('updateproyek');
+Route::post('/proyek/{id}/update', [ProyekController::class, 'update'])->name('updateproyek');
 Route::get('/proyek/{id}/detail', [ProyekController::class, 'detail'])->name('detailproyek');
 
 // Route Subproyek
 Route::post('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek'])->name('addsubproyek');
-Route::get('/proyek/{id}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
+Route::get('/proyek/{id}/{id_pro}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
+Route::post('/proyek/{id}/updatesubproyek', [ProyekController::class, 'updatesubproyek'])->name('updatesubproyek');
 Route::get('/proyek/{id}/{idworker}/deletesubproyek', [ProyekController::class, 'deletesubproyek'])->name('deletesubproyek');
-
+//route upload subproyek
+Route::get('/proyek/{id}/{id_pro}/addupload', [ProyekController::class, 'addupload'])->name('addupload');
+Route::post('/proyek/{id}/updateupload', [ProyekController::class, 'updateupload'])->name('updateupload');
 
 //Route worker
 Route::get('/worker', [WorkerController::class, 'index'])->name('worker');
@@ -87,10 +90,12 @@ Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name
 Route::post('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('updatepembayaran');
 
 // Route Gaji
-Route::get('/gaji', [PembayaranController::class, 'gaji'])->name('gaji');
-Route::post('/gaji/simpangaji', [PembayaranController::class, 'simpangaji'])->name('simpangaji');
+Route::get('/indexgaji', [PembayaranController::class, 'indexgaji'])->name('indexgaji');
+Route::get('/indexgaji/{id}/detailgaji', [PembayaranController::class, 'gaji'])->name('detailgaji');
+// Route::get('/gaji', [PembayaranController::class, 'gaji'])->name('gaji');
+Route::get('/indexgaji/{id}/{id_sub}/editgaji', [PembayaranController::class, 'editgaji'])->name('editgaji');
+Route::post('/indexgaji/{id}/simpangaji', [PembayaranController::class, 'simpangaji'])->name('simpangaji');
 Route::get('/gaji/{id}/deletegaji', [PembayaranController::class, 'deletegaji'])->name('deletegaji');
-Route::get('/gaji/{id}/editgaji', [PembayaranController::class, 'editgaji'])->name('editgaji');
-Route::post('/gaji/{id}', [PembayaranController::class, 'updategaji'])->name('updategaji');
+Route::post('/indexgaji/{id}', [PembayaranController::class, 'updategaji'])->name('updategaji');
 
 });

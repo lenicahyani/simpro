@@ -53,9 +53,10 @@ class CustomerController extends Controller
 
    //update customer
    public function update (Request $request, $id){     
-    $this->_validation($request);
+    // $this->_validation($request);
     $customer = \App\Models\Customer::find($id);
     $customer->update($request->all());
+    // dd($customer);
     return redirect('/customer')->with('sukses','Data Berhasil Diupdate');
     }
 
