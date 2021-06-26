@@ -10,8 +10,7 @@ class Proyek extends Model
 {
     protected $table = 'proyek';
     protected $fillable = ['id','customer' ,'nama_proyek' ,'nilai_proyek', 
-    'pimpinan_proyek', 'status', 'total_pembayaran',
-    'tanggal_estimasi' ];
+    'pimpinan_proyek', 'status','tanggal_estimasi' ];
 
     public function worker()
     {

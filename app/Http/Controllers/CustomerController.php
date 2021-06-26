@@ -38,6 +38,7 @@ class CustomerController extends Controller
 
     //menyimpan form addcustomer
     public function simpan(Request $request){      
+        // dd($request->all());
         $this->_validation($request);
          \App\Models\Customer::create($request->all());
          return redirect ('/customer')->with('sukses','Data Berhasil Diinput');

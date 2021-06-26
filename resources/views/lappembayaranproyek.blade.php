@@ -25,7 +25,6 @@
 				<th>Customer</th>
                 <th>Nama Proyek</th>
                 <th>Nilai Proyek</th>
-				<th>Termin Ke</th>
 				<th>Tanggal Bayar</th>					
 				<th>Total Bayar</th> 
                 </tr>  

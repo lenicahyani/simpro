@@ -31,7 +31,7 @@ class OtentikasiController extends Controller
 
     public function simpanregistrasi(Request $request){
        
-            //dd($request);
+            // dd($request);
             User::create([
                 'name'      => $request -> name,
                 'email'     => $request -> email,

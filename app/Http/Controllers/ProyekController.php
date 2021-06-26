@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Subproyek;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Stroage ;
 
 class ProyekController extends Controller
 {
@@ -56,36 +57,53 @@ class ProyekController extends Controller
         // return view('proyeks.addproyek',['data_proyek'=>$data_proyek]);
      
     }
-    public function addupload(){      
-        
-        $worker = Worker::all();
-        $custom = Customer::all();
-        $proyek = \App\Models\Proyek::all();
-        $subproyek = Subproyek::all();
-        return view('subproyeks.addupload', compact('proyek','custom','worker','subproyek'));
-        // return view('proyeks.addproyek', compact('worker'));
-        // $data_proyek = \App\Models\Proyek::all();
-        // return view('proyeks.addproyek',['data_proyek'=>$data_proyek]);
-     
+    public function addupload ($id,$proyek_id){  
+        // dd($id); 
+    $subproyek = Subproyek::find($proyek_id);   
+          
+    return view('subproyeks.addupload', compact('subproyek','id'));
+    // return redirect()->back()->with('suksess','Data Berhasil Diinput');
     }
-    public function updateupload(Request $request, $proyek_id){ 
-        // dd($request); 
-        $request->file('upload')->store('uploads');        
+    public function uploaddoc ($id,$proyek_id){  
+        // dd($id); 
+    $subproyek = Subproyek::find($proyek_id);   
+          
+    return view('uploads.uploaddoc', compact('subproyek','id'));
+    // return redirect()->back()->with('suksess','Data Berhasil Diinput');
+    }
+
+    public function download(Request $request, $upload){  
+        dd ($upload);
+        $subproyek = Subproyek::all();
+        return response()->download(public_path('store/public'.$upload));
+       // return $request->all();
+   }
+    
+    public function updateupload (Request $request, $proyek_id){
+    // $filename = $request->file('upload')->getClientOriginalName;
+        // $request->upload->storeAs('uploads', $subproyek['upload']);
+        // $filename->store('uploads');
+        // $request->file('upload')->store('uploads');
+
+        $request->file('upload')->store('uploads');
+         
         $subproyek = Subproyek::find($proyek_id);
-        // $id_kpro = $request->id_kpro;            
+        $id_kpro = $request->id_kpro;    
+            
+        // $upload = $request->upload;        
         // dd ($id_kpro);
-        // $subproyek->update($request->all());
+        $subproyek->update($request->all());
         // dd($subproyek); 
-        return redirect()->back()->with('sukses','Data Berhasil Diupdate');
-        // return redirect()->to('/proyek/'.$id_kpro.'/detail')->with('sukses3','Progress Berhasil Diupdate');
+        return redirect()->to('/proyek/'.$id_kpro.'/detail')->with('sukses3','Progress Berhasil Diupdate');
     }
 
     //menyimpan form addproyek
-    public function simpan(Request $request){      
+    public function simpan(Request $request){  
+        // dd($request->all());   
          $this->_validation($request);
          
          \App\Models\Proyek::create($request->all());
-         return redirect ('/proyek')->with('sukses','Data Berhasil Diinput');
+         return redirect ('/proyek')->with('suksesss','Data Berhasil Diinput');
         // return $request->all();
     }
      //muncul form editproyek 
@@ -99,7 +117,7 @@ class ProyekController extends Controller
    }
    //update proyek
    public function update (Request $request, $id){     
-     
+    //  dd($request);
     $this->_validation($request);
 
     $proyek = \App\Models\Proyek::find($id);
@@ -164,15 +182,16 @@ class ProyekController extends Controller
     // return redirect()->back()->with('suksess','Data Berhasil Diinput');
     }
  //update subproyek
-    public function updatesubproyek (Request $request, $proyek_id){ 
-            $request->file('upload')->store('uploads'); 
-            $subproyek = Subproyek::find($proyek_id);
-            $id_kpro = $request->id_kpro;    
-            // $upload = $request->upload;        
-            // dd ($id_kpro);
-            $subproyek->update($request->all());
-            // dd($subproyek); 
-            return redirect()->to('/proyek/'.$id_kpro.'/detail')->with('sukses3','Progress Berhasil Diupdate');
+    public function updatesubproyek (Request $request, $proyek_id){
+        // $request->file('upload')->store('uploads'); 
+        $subproyek = Subproyek::find($proyek_id);
+        $id_kpro = $request->id_kpro;    
+            
+        // $upload = $request->upload;        
+        // dd ($id_kpro);
+        $subproyek->update($request->all());
+        // dd($subproyek); 
+        return redirect()->to('/proyek/'.$id_kpro.'/detail')->with('sukses3','Progress Berhasil Diupdate');
     }
 
     // Hapus proyek 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Bulan Mei 2021 pada 13.01
+-- Waktu pembuatan: 21 Jun 2021 pada 10.19
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -47,8 +47,7 @@ INSERT INTO `customer` (`id`, `nama_customer`, `email`, `telepon`, `alamat`, `cr
 (3, 'Fatir Alfarizi', 'fatir@gmail.com', '0827765543', 'Cilacap', '2021-04-20 23:37:42', '2021-04-30 23:00:34'),
 (4, 'Adelia Devian', 'lenicahyani@gmail.com', '0866534332', 'Sidoarjo', '2021-04-24 00:50:17', '2021-04-30 23:01:09'),
 (5, 'Nur Faizah', 'nurr@gmail.com', '0857886543', 'Jakarta', '2021-04-30 23:01:43', '2021-04-30 23:01:43'),
-(6, 'Putri Titina', 'putriiti@gmail.com', '0887366524', 'Magelang', '2021-04-30 23:02:27', '2021-04-30 23:02:27'),
-(7, 'Robin Hut', 'robbin@gmail.com', '0887654333', 'Madura', '2021-04-30 23:03:11', '2021-04-30 23:03:11');
+(6, 'Putri Titina', 'putriiti@gmail.com', '0887366524', 'Magelang', '2021-04-30 23:02:27', '2021-04-30 23:02:27');
 
 -- --------------------------------------------------------
 
@@ -125,10 +124,9 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id`, `customer`, `nama_proyek`, `termin`, `tanggal_bayar`, `total_bayar`, `created_at`, `updated_at`) VALUES
-(2, 'Nur Faizah', 'SI Universitas', 1, '2021-05-21', 1000000, '2021-05-01 06:16:49', '2021-04-30 23:16:49'),
-(3, 'Adelia Devian', 'SIMPRO', 1, '2021-05-19', 9, '2021-05-01 06:16:55', '2021-04-30 23:16:55'),
+(2, 'Nur Faizah', 'SIA', 1, '2021-05-21', 1000000, '2021-06-09 13:42:35', '2021-06-09 06:42:35'),
+(3, 'Adelia Devian', 'SIMPRO', 1, '2021-05-19', 9000000, '2021-05-01 13:32:51', '2021-05-01 06:32:51'),
 (4, 'Putri Titina', 'ARTIKEL', 2, '2021-05-27', 1000000, '2021-05-01 06:17:04', '2021-04-30 23:17:04'),
-(5, 'Robin Hut', 'SIMPRO', 2, '2021-05-14', 1000000, '2021-05-01 06:17:11', '2021-04-30 23:17:11'),
 (6, 'Reza Rahardian', 'SEO ANALISA', 3, '2021-05-26', 1000000, '2021-05-01 06:17:18', '2021-04-30 23:17:18');
 
 -- --------------------------------------------------------
@@ -143,6 +141,7 @@ CREATE TABLE `proyek` (
   `nama_proyek` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nilai_proyek` int(11) NOT NULL,
   `termin` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `upload` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pimpinan_proyek` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggal_estimasi` date NOT NULL,
@@ -154,14 +153,12 @@ CREATE TABLE `proyek` (
 -- Dumping data untuk tabel `proyek`
 --
 
-INSERT INTO `proyek` (`id`, `customer`, `nama_proyek`, `nilai_proyek`, `termin`, `pimpinan_proyek`, `status`, `tanggal_estimasi`, `created_at`, `updated_at`) VALUES
-(7, 'Rohman Nirhim', 'ARTIKEL', 1500000, '2', 'Nur Iqu Lukmanul Hakim', 'Selesai', '2021-04-28', '2021-04-19 18:27:10', '2021-04-28 21:30:15'),
-(9, 'Rohman Nirhim', 'SIMPRO', 1500000, '1', 'Nur Iqu Lukmanul Hakim', 'Belum Diproses', '2021-04-14', '2021-04-19 19:32:24', '2021-04-19 19:32:24'),
-(12, 'Rohman', 'SEO ANALISA', 11, '1', 'Nur Iqu Lukmanul Hakim', 'Belum Diproses', '2021-04-21', '2021-04-19 22:05:42', '2021-04-19 22:05:42'),
-(13, 'Rohim', 'SEO ANALISA', 11, '1', 'Leni Cahyani', 'Sedang Diproses', '2021-04-21', '2021-04-19 22:06:24', '2021-04-19 23:04:49'),
-(16, 'priyanto', 'SI Universitas', 15000000, '2', 'Leni Cahyani', 'Sedang Diproses', '2021-05-08', '2021-04-20 19:42:38', '2021-04-28 21:39:34'),
-(21, 'ROhman', 'SIA', 15000000, '3', 'Leni Cahyani', 'Sedang Diproses', '2021-05-08', '2021-04-28 21:38:03', '2021-04-28 21:38:03'),
-(22, 'Putri Titina', 'SIU', 2500000, '2', 'Adelia Devian', 'Sedang Diproses', '2021-05-13', '2021-04-30 23:34:54', '2021-04-30 23:34:54');
+INSERT INTO `proyek` (`id`, `customer`, `nama_proyek`, `nilai_proyek`, `termin`, `upload`, `pimpinan_proyek`, `status`, `tanggal_estimasi`, `created_at`, `updated_at`) VALUES
+(7, 'Putri Titina', 'ARTIKEL', 1500000, '2', '', 'Nur Iqu Lukmanul Hakim', 'Selesai', '2021-04-28', '2021-04-19 18:27:10', '2021-06-09 06:04:45'),
+(9, 'Fatir Alfarizi', 'SIMPRO', 1500000, '1', '', 'Nur Iqu Lukmanul Hakim', 'Belum Diproses', '2021-04-14', '2021-04-19 19:32:24', '2021-06-09 01:37:34'),
+(12, 'Nur Faizah', 'SEO ANALISA', 11, '1', '', 'Nur Iqu Lukmanul Hakim', 'Belum Diproses', '2021-04-21', '2021-04-19 22:05:42', '2021-06-08 09:36:34'),
+(16, 'priyanto', 'SI Universitas', 15000000, '2', '', 'Leni Cahyani', 'Sedang Diproses', '2021-05-08', '2021-04-20 19:42:38', '2021-04-28 21:39:34'),
+(22, 'Putri Titina', 'SIU', 2500000, '2', '', 'Adelia Devian', 'Sedang Diproses', '2021-05-13', '2021-04-30 23:34:54', '2021-04-30 23:34:54');
 
 -- --------------------------------------------------------
 
@@ -177,6 +174,7 @@ CREATE TABLE `proyek_worker` (
   `nilai_subproyek` int(11) NOT NULL,
   `deskripsi` varchar(50) DEFAULT NULL,
   `gaji` varchar(50) DEFAULT NULL,
+  `upload` text,
   `progres` varchar(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL
@@ -186,11 +184,13 @@ CREATE TABLE `proyek_worker` (
 -- Dumping data untuk tabel `proyek_worker`
 --
 
-INSERT INTO `proyek_worker` (`id`, `proyek_id`, `worker_id`, `nama_subproyek`, `nilai_subproyek`, `deskripsi`, `gaji`, `progres`, `created_at`, `updated_at`) VALUES
-(20, 7, 22, 'Master Customer', 600000, NULL, 'Sudah Dibayar', '73', '2021-04-24 01:25:54', '2021-05-01 06:07:37'),
-(29, 8, 22, 'Master User', 350000, NULL, 'Sudah Dibayar', '56', '2021-04-24 22:48:08', '2021-05-01 06:07:15'),
-(31, 7, 24, 'Membuat Rancangan Database', 100000, NULL, 'Sudah Dibayar', '50', '2021-04-25 21:24:44', '2021-05-01 06:05:11'),
-(32, 9, 23, 'Menambahkan Autentifikasi', 1000000, NULL, 'Sudah Dibayar', '0', '2021-04-28 21:40:56', '2021-04-29 04:40:56');
+INSERT INTO `proyek_worker` (`id`, `proyek_id`, `worker_id`, `nama_subproyek`, `nilai_subproyek`, `deskripsi`, `gaji`, `upload`, `progres`, `created_at`, `updated_at`) VALUES
+(29, 8, 22, 'Master User', 350000, NULL, 'Sudah Dibayar', NULL, '56', '2021-04-24 22:48:08', '2021-05-01 06:07:15'),
+(32, 9, 23, 'Menambahkan Autentifikasi', 1000000, NULL, 'Sudah Dibayar', NULL, '44', '2021-04-28 21:40:56', '2021-06-09 08:29:34'),
+(40, 12, 27, 'gfdrdre', 666, NULL, 'Belum Dibayar', NULL, '94', '2021-06-08 10:20:09', '2021-06-09 03:38:05'),
+(42, 12, 26, 'Menambahkan Autentifikasi', 1000000, 'a', 'Belum Dibayar', '', '80', '2021-06-08 20:34:32', '2021-06-17 12:12:29'),
+(43, 9, 22, 'Apa ajah lah', 1000000, NULL, 'Belum Dibayar', 'C:\\xampp\\tmp\\phpFFBF.tmp', '33', '2021-06-08 20:51:02', '2021-06-18 15:36:51'),
+(44, 7, 22, 'Merancang Database', 100000, 'tabel worker dan customer', 'Belum Dibayar', 'upload', '81', '2021-06-11 08:06:32', '2021-06-19 12:17:09');
 
 -- --------------------------------------------------------
 
@@ -217,6 +217,20 @@ INSERT INTO `tim` (`id`, `nama_proyek`, `nama_tugas`, `deskripsi`, `tim`, `progr
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `uploadfile`
+--
+
+CREATE TABLE `uploadfile` (
+  `id` int(50) NOT NULL,
+  `nama_proyek` varchar(50) NOT NULL,
+  `nama_file` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -236,7 +250,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'leni cahyani', 'lenicahyani12tkj216@gmail.com', NULL, '$2y$10$PcMnk/0upAh8j5rEMhM.de4OQQrNFHLWoZ9zjmFqCIfyinlFNTmtW', NULL, '2021-04-30 08:09:26', '2021-04-30 08:09:26');
+(1, 'leni cahyani', 'lenicahyani12tkj216@gmail.com', NULL, '$2y$10$PcMnk/0upAh8j5rEMhM.de4OQQrNFHLWoZ9zjmFqCIfyinlFNTmtW', NULL, '2021-04-30 08:09:26', '2021-04-30 08:09:26'),
+(2, 'Adelia Devian', 'adelia@gmail.com', NULL, '$2y$10$1Tso8ZxD1to496mOOL.kxumjEFYOX4qW8mTQKnAyqvNeqEsARG/Em', NULL, '2021-05-29 05:00:23', '2021-05-29 05:00:23');
 
 -- --------------------------------------------------------
 
@@ -272,12 +287,12 @@ CREATE TABLE `worker` (
 --
 
 INSERT INTO `worker` (`id`, `nama_worker`, `alamat`, `role`, `status`, `email`, `telepon`, `created_at`, `updated_at`) VALUES
-(22, 'Nur Iqu Lukmanul Hakim', 'Mojokerto', 'Administrator', 'DB DESIGNER', 'nuriqu6@gmail.com', '0897665432', NULL, '2021-04-30 23:12:59'),
+(22, 'Nur Iqu Lukmanul Hakim', 'Mojokerto', 'Administrator', 'TESTER', 'nuriqu6@gmail.com', '0897665432', NULL, '2021-06-09 05:43:04'),
 (23, 'Leni Cahyani', 'Cilacap', 'Worker', 'TESTER', 'leni@gmail.comm', '08777555544', '2021-04-19 17:53:09', '2021-04-30 23:13:29'),
 (24, 'Novica Ogidia Bella', 'Jombang', 'Administrator', 'FRONTEND PROGRAMMER', 'novicao@gmail.com', '08223444455', '2021-04-20 23:36:54', '2021-04-30 23:13:57'),
 (25, 'Adelia Devian', 'Sidoarjo', 'Administrator', 'DB DESIGNER', 'adelia@gmail.com', '0866543335', '2021-04-30 22:41:25', '2021-04-30 23:14:28'),
 (26, 'Ni Kadaek Eva A', 'Bali', 'Administrator', 'BACKEND PROGRAMMER', 'kadekkka@gmail.com', '0888433356', '2021-04-30 22:41:45', '2021-04-30 23:15:03'),
-(27, 'Asmiati', 'Nusa Tenggara Timur', 'Administrator', 'PM', 'asmmiti@gmail.com', '08776543334', '2021-04-30 22:42:01', '2021-04-30 23:15:45');
+(28, 'Asmiati', 'Nusa Tenggara Timur', 'Administrator', 'FRONTEND PROGRAMMER', 'asmmiti@gmail.com', '0866543335', '2021-06-09 05:43:59', '2021-06-09 05:43:59');
 
 --
 -- Indexes for dumped tables
@@ -333,6 +348,12 @@ ALTER TABLE `tim`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `uploadfile`
+--
+ALTER TABLE `uploadfile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -359,7 +380,7 @@ ALTER TABLE `worker`
 -- AUTO_INCREMENT untuk tabel `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -389,7 +410,7 @@ ALTER TABLE `proyek`
 -- AUTO_INCREMENT untuk tabel `proyek_worker`
 --
 ALTER TABLE `proyek_worker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT untuk tabel `tim`
@@ -398,16 +419,22 @@ ALTER TABLE `tim`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `uploadfile`
+--
+ALTER TABLE `uploadfile`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `worker`
 --
 ALTER TABLE `worker`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

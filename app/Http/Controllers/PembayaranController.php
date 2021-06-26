@@ -15,14 +15,12 @@ class PembayaranController extends Controller
         $validation = $request->validate([
             'customer' => 'required',
             'nama_proyek' => 'required',
-            'termin' => 'required',
             'tanggal_bayar' => 'required',
             'total_bayar' => 'required',                  
         ],
         [
             'customer.required' => 'Harus diisi',
             'nama_proyek.required' => 'Harus diisi',
-            'termin.required' => 'Harus diisi',
             'tanggal_bayar.required' => 'Harus diisi',
             'total_bayar.required' => 'Harus diisi', 
             'total_bayar.required' => 'Harus diisi Angka ',  
@@ -69,10 +67,10 @@ class PembayaranController extends Controller
         // ->select('*')
         ->get();
        
-        $gaj = Subproyek::paginate(5);
+        // $gaj = Subproyek::paginate(5);
         // $sub1 = Subproyek::all($id);
         // dd($detailgaji);
-        return view('gaji.detailgaji', compact('detailgaji','gaj'));           
+        return view('gaji.detailgaji', compact('detailgaji'));           
     }
      
     //memampilkan form addpembayran
@@ -106,13 +104,13 @@ class PembayaranController extends Controller
     //update Gaji
     public function updategaji (Request $request, $id_sub){     
         // $this->_validation($request);
-        // dd($id_sub);
+       
         $gaji = Subproyek::find($id_sub);
         $id_kgji = $request->id_kgji;
-        dd($id_kgji);
+        // dd($id_kgji);
         // echo $id_kgji;
         $gaji->update($request->all());
-       
+        // dd($gaji);
         // return redirect()->back()->with('suksess','Data Berhasil Diupdate');
         return redirect()->to('/indexgaji/'.$id_kgji.'/detailgaji')->with('sukses','Data Berhasil Diupdate');
         // return view ('gaji.detailgaji',['proyek' => $proyek ]);       
@@ -131,14 +129,14 @@ class PembayaranController extends Controller
             
         $pembayaran = Pembayaran::find($id);
         $pembayaran -> delete($pembayaran);
-        return redirect('/pembayaran')->with('sukses','Data Berhasil Dihapus');
+        return redirect('/pembayaran')->with('delete','Data Berhasil Dihapus');
     }
     // Hapus Pembayaran 
     public function deletegaji ($id){      
             
         $gaji = Subproyek::find($id);
         $gaji -> delete($gaji);
-        return redirect('/gaji')->with('sukses','Data Berhasil Dihapus');
+        return redirect('/indexgaji')->with('delete','Data Berhasil Dihapus');
     }
     
 

@@ -9,19 +9,19 @@
             {{csrf_field()}} 
             <div class="form-group">
                 <label>Nama Tugas</label>
-                <input name="nama_subproyek" type="text" class="form-control" value="{{$gaji->nama_subproyek}} " disabled>                
+                <input name="nama_subproyek" type="text" class="form-control" value="{{$gaji->nama_subproyek}} " >                
             </div> 
             <div class="form-group">
                 <label>Nilai Tugas</label>
-                <input name="nilai_subproyek" type="text" class="form-control" value="{{$gaji->nilai_subproyek}}" disabled>
+                <input name="nilai_subproyek" type="text" class="form-control" value="{{$gaji->nilai_subproyek}}" >
             </div>
             <div class="form-group">
                 <label>Deskripsi</label>
-                <input name="deskripsi" type="text" class="form-control" value="{{$gaji->deskripsi}}" disabled>
+                <input name="deskripsi" type="text" class="form-control" value="{{$gaji->deskripsi}}" >
             </div>
             <div class="form-group">
                 <label>Progres</label>
-                <input name="progres" type="text" class="form-control" value="{{$gaji->progres}}" disabled>
+                <input name="progres" type="text" class="form-control" value="{{$gaji->progres}}" >
             </div>            
             <div class="form-group">
                 <label>Gaji</label>

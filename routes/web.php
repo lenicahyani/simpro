@@ -10,6 +10,7 @@ use App\Http\Controllers\LapprogresController;
 use App\Http\Controllers\SubproyekController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\OtentikasiController;
+use App\Http\Controllers\UploadController;
 
 
 /*
@@ -60,9 +61,18 @@ Route::post('/proyek/{id}/addsubproyek', [ProyekController::class, 'addsubproyek
 Route::get('/proyek/{id}/{id_pro}/editsubproyek', [ProyekController::class, 'editsubproyek'])->name('editsubproyek');
 Route::post('/proyek/{id}/updatesubproyek', [ProyekController::class, 'updatesubproyek'])->name('updatesubproyek');
 Route::get('/proyek/{id}/{idworker}/deletesubproyek', [ProyekController::class, 'deletesubproyek'])->name('deletesubproyek');
+// uploaddoc
+Route::get('/proyek/{id}/{id_pro}/uploaddoc', [ProyekController::class, 'uploaddoc'])->name('uploaddoc');
+Route::post('/proyek/{id}/updateupload', [ProyekController::class, 'updateupload'])->name('updateupload');
+
+
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('proses');
+
 //route upload subproyek
 Route::get('/proyek/{id}/{id_pro}/addupload', [ProyekController::class, 'addupload'])->name('addupload');
 Route::post('/proyek/{id}/updateupload', [ProyekController::class, 'updateupload'])->name('updateupload');
+Route::post('/proyek/{id}/{id_pro}/download/{upload}', [ProyekController::class, 'download'])->name('download');
 
 //Route worker
 Route::get('/worker', [WorkerController::class, 'index'])->name('worker');

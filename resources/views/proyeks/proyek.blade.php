@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="section-body">
+<div class="card">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         @if(session('sukses'))
@@ -11,7 +12,7 @@
         </div>
         @endif
         @if(session('suksesss'))
-        <div class="alert alert-primary">
+        <div class="alert alert-success">
            {{session('suksesss')}}
         </div>
         @endif
@@ -24,8 +25,8 @@
                     <th>Harga Proyek</th>        
                     <th>Pimpinan Proyek</th>         
                     <th>Status</th>                
-                    <th>Tanggal Estimasi</th>     
-                    <th>Action</th>
+                    <th>Tanggal Estimasi</th> 
+                    <th colspan=2>Action</th>
                 </tr>  
                 @foreach($data_proyek as $no=>$proyek)
                 <tr>

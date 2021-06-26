@@ -10,7 +10,6 @@ class WorkerController extends Controller
     public function _validation(Request $request){
     $validation = $request->validate([
         'nama_worker' => 'required',
-        'role' => 'required',
         'alamat' => 'required',
         'status' => 'required',
         'email' => 'required',
@@ -18,7 +17,6 @@ class WorkerController extends Controller
     ],
     [
         'nama_worker.required' => 'Harus diisi',
-        'role.required' => 'Harus diisi',
         'alamat.required' => 'Harus diisi',
         'status.required' => 'Harus diisi',
         'email.required' => 'Harus diisi',
@@ -63,7 +61,7 @@ class WorkerController extends Controller
     $this->_validation($request);
     $worker = \App\Models\Worker::find($id);
     $worker->update($request->all());
-    return redirect('/worker')->with('sukses','Data Berhasil Diupdate');
+    return redirect('/worker')->with('update','Data Berhasil Diupdate');
     }
 
     //mellihat Hapus worker 
@@ -71,7 +69,7 @@ class WorkerController extends Controller
      
         $worker = \App\Models\Worker::find($id);
         $worker -> delete($worker);
-        return redirect('/worker')->with('sukses','Data Berhasil Dihapus');
+        return redirect('/worker')->with('hapus','Data Berhasil Dihapus');
     }
     //mellihat detail worker 
     public function detail ($id){      

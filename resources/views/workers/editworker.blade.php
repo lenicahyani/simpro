@@ -22,14 +22,7 @@
                     <div class="form-group">
                         <label>Alamat</label>
                         <input name="alamat" type="text" class="form-control" value="{{$worker->alamat}}">
-                    </div> 
-                    <div class="form-group">
-                        <label>Role</label>
-                        <select class="form-control" name="role" >
-                        <option  value="Administrator" @if($worker->role == 'Administrator')selected @endif>Administrator</option>
-                        <option  value="Worker" @if($worker->role == 'Worker')selected @endif>Worker</option>
-                        </select>
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">

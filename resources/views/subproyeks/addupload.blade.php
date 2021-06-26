@@ -13,13 +13,10 @@
                 {{session('suksesss')}}  
                 </div>
                 @endif
-                <form action="{{ route('updatesubproyek', $subproyek->id) }}" method="post" enctype="multipart/form-data">
-                    {{csrf_field()}} 
+                <form action="{{ route('updateupload', $subproyek->id) }}" method="post" enctype="multipart/form-data">
+                    {{csrf_field()}}   
                     <label>Upload File</label>
-                        <input name="upload" type="file" class="form-control @error('upload') is-invalid @enderror" value="{{old('upload')}}">
-                        @error('upload')
-                        <div class="invalid-feedback">{{$message}}</div>
-                        @enderror
+                        <input name="upload" type="file" class="form-control" value="{{$subproyek->upload}}">                       
                     <div class="card-footer text-right">
                         <button  type="submit" class="btn btn-primary mr-1">Simpan</button>
                     </div>

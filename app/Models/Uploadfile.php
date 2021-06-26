@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Uploadfile extends Model
 {
-    protected $table = 'uloadfile';
-    protected $fillable = ['nama_customer' ,'email','telepon','alamat'];
+    protected $table = 'uploadfile';
+    protected $fillable = ['file' ,'keterangan'];
 }

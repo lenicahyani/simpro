@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="section-body">
+<div class="card">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         @if(session('sukses'))
@@ -10,18 +11,24 @@
            {{session('sukses')}}
         </div>
         @endif
+        @if(session('delete'))
+        <div class="alert alert-danger">
+           {{session('delete')}}
+        </div>
+        @endif
             <a href="pembayaran/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i>Tambah Pembayaran</a>            
             <table class="table table-striped table-md">
                 <tr>
-                    <!-- <th>No</th> -->
+                    <th>No</th>
                     <th>Nama Customer</th>
                     <th>Nama Proyek</th> 
                     <th>Tanggal Bayar</th>  
-                    <th>Total Bayar</th>       
-                    <th>Action</th>
+                    <th>Total Bayar</th> 
+                    <th colspan=2>Action</th>
                 </tr>  
-                @foreach($pembayaran as $pembayaran)
-                <tr>                   
+                @foreach($pembayaran as $no=>$pembayaran)
+                <tr>      
+                    <td>{{++$no}}</td>               
                     <td>{{$pembayaran->customer}}</td>                    
                     <td>{{$pembayaran->nama_proyek}}</td>              
                     <td>{{$pembayaran->tanggal_bayar}}</td>                    
@@ -34,7 +41,7 @@
         </div>
     </div>
 </div>
-
+</div>
 @endsection
 
 @push('page-scripts')

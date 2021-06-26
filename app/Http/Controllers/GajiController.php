@@ -12,14 +12,12 @@ class PembayaranController extends Controller
         $validation = $request->validate([
             'customer' => 'required',
             'nama_proyek' => 'required',
-            'termin' => 'required',
             'tanggal_bayar' => 'required',
             'total_bayar' => 'required',                  
         ],
         [
             'customer.required' => 'Harus diisi',
             'nama_proyek.required' => 'Harus diisi',
-            'termin.required' => 'Harus diisi',
             'tanggal_bayar.required' => 'Harus diisi',
             'total_bayar.required' => 'Harus diisi', 
             'total_bayar.required' => 'Harus diisi Angka ',  

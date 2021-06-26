@@ -41,13 +41,6 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label>Termin</label>
-                <input name="termin" type="text" class="form-control @error('termin') is-invalid @enderror" value="{{old('termin')}}">
-                @error('termin')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label>Nama Pimpinan</label>
                 <select name="pimpinan_proyek" class="form-control @error('pimpinan_proyek') is-invalid @enderror">
                     <option value="">--Pilih--</option>

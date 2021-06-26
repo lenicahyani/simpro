@@ -22,17 +22,6 @@
                 @enderror
             </div> 
             <div class="form-group">
-                <label>Role</label>
-                <select  class="form-control @error('role') is-invalid @enderror" name="role"  value="{{old('role')}}">
-                <option value="">--Pilih--</option>
-                <option value="Administrator">Administrator</option>
-                <option value="Worker">Worker</option>
-                </select>
-                @error('role')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label>Status</label>
                 <select class="form-control @error('status') is-invalid @enderror" name="status"  value="{{old('status')}}">
                 <option value="">--Pilih--</option>

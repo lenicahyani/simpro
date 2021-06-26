@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="section-body">
+<div class="card">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         @if(session('sukses'))
@@ -13,15 +14,16 @@
             <a href="customer/add" class="btn btn-icon icon-left btn-success"><i class="far fa-edit"></i>Tambah Customer</a>            
             <table class="table table-striped table-md">
                 <tr>
-                    <!-- <th>No</th> -->
+                    <th>No</th>
                     <th>Nama Customer</th>
                     <th>Email</th> 
                     <th>Telepon</th>  
                     <th>Alamat</th>       
-                    <th>Action</th>
+                    <th colspan=2>Action</th>
                 </tr>  
-                @foreach($data_customer as $customer)
-                <tr>                   
+                @foreach($data_customer as $no=>$customer)
+                <tr>             
+                    <td>{{++$no + ($data_customer->currentPage()-1) * $data_customer->perPage()}}</td>      
                     <td>{{$customer->nama_customer}}</td>                    
                     <td>{{$customer->email}}</td>
                     <td>{{$customer->telepon}}</td>                    
@@ -35,6 +37,7 @@
                 {{$data_customer ->links()}}
             </div>
         </div>
+    </div>
     </div>
 </div>
 
